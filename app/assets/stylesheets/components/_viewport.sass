@@ -1,0 +1,60 @@
+#viewport
+  position: relative
+  box-sizing: border-box
+  margin-top: 51px
+  opacity: 0
+  +clearfix
+  +transition(opacity 400ms)
+
+  &.ready
+    opacity: 1
+
+  > .alert
+    text-align: center
+
+  footer.actions
+    text-align: center
+    padding: $grid-gutter-width 0
+    border-top: 1px solid material-color('grey', '300')
+
+    form
+      display: inline-block
+
+    button,
+    input[type='submit'],
+    a[role='button'],
+    a.button
+      @extend .btn-lg
+      font:
+        family: $oswald
+        weight: 400
+      text-transform: uppercase
+      background-color: material-color('grey', '300')
+      color: material-color('grey', '700')
+      border: 0
+      margin:
+        left: $grid-gutter-width / 2
+        right: $grid-gutter-width / 2
+
+      &:before
+        position: relative
+        top: -2px
+
+      &.primary-action
+        background-color: material-color('grey', '800')
+        color: white
+
+      &:hover,
+      &:focus
+        background-color: $orange
+        color: white
+
+      &:active
+        background-color: $orange-dark
+        color: white
+
+  @media only screen and (min-width: $screen-sm-min)
+    margin-top: 53px
+
+  @media only screen and (min-width: $screen-md-min)
+    margin-top: 81px

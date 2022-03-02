@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <soap:Body>
+    <CheckoutShoppingCartResponse xmlns="http://clients.mindbodyonline.com/api/0_5">
+      <CheckoutShoppingCartResult>
+        <Status>Success</Status>
+        <ErrorCode>200</ErrorCode>
+        <XMLDetail>Full</XMLDetail>
+        <ResultCount>0</ResultCount>
+        <CurrentPageIndex>0</CurrentPageIndex>
+        <TotalPageCount>0</TotalPageCount>
+        <ShoppingCart>
+          <ID>5542751a-0541-4bcf-8da6-72962ffac74b</ID>
+          <CartItems>
+            <CartItem>
+              <Item xsi:type="Service">
+                <Price>28.0000</Price>
+                <OnlinePrice>28.0000</OnlinePrice>
+                <TaxRate>0</TaxRate>
+                <ProductID>10101</ProductID>
+                <ID>10101</ID>
+                <Name>1 RIDE</Name>
+                <Count>1</Count>
+              </Item>
+              <DiscountAmount>0</DiscountAmount>
+              <ID>1</ID>
+              <Quantity>1</Quantity>
+            </CartItem>
+          </CartItems>
+          <SubTotal>28</SubTotal>
+          <DiscountTotal>0</DiscountTotal>
+          <TaxTotal>0</TaxTotal>
+          <GrandTotal>28</GrandTotal>
+        </ShoppingCart>
+      </CheckoutShoppingCartResult>
+    </CheckoutShoppingCartResponse>
+  </soap:Body>
+</soap:Envelope>

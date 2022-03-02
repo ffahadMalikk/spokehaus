@@ -1,0 +1,103 @@
+.alert
+  @extend .container-fluid
+  display: block
+  border: 0
+    radius: 0
+  margin: 0 0 2px
+
+.alert-type-booking
+  background-color: material-color('grey', '900')
+  color: material-color('grey', '700')
+
+  .booking-title
+    font:
+      family: $oswald
+      weight: 400
+      size: $font-size-h4
+    text-transform: uppercase
+    color: white
+    margin: 0 0 $padding-small-vertical
+
+  span
+    color: material-color('grey')
+
+  .booking-help
+    @extend .container-fluid
+    +make-row
+    font-size: $font-size-small
+    padding:
+      top: $padding-small-vertical
+      bottom: $padding-small-vertical
+    margin:
+      top: $padding-large-vertical
+      bottom: -($grid-gutter-width / 2)
+    background-color: material-color('grey', '300')
+    color: material-color('grey', '600')
+
+  &:focus,
+  &:hover
+    text-decoration: none
+    background-color: $orange
+    color: material-color('grey', '800')
+
+    span
+      color: material-color('grey', '900')
+
+    .booking-help
+      background-color: material-color('grey', '200')
+      color: material-color('grey', '800')
+
+.alert-type-admin
+  background-color: material-color('grey', '900')
+  color: material-color('grey', '700')
+  padding:
+    top: 0
+    bottom: 0
+  text-align: left !important
+
+  .alert-admin-title
+    font:
+      family: $oswald
+      weight: 400
+      size: $font-size-h1
+    line-height: .9
+    text-transform: uppercase
+    color: white
+    margin: 0
+
+.alert-type-sign-up-sheet
+  background-color: material-color('grey', '700')
+  color: material-color('grey', '100')
+  font:
+    family: $oswald
+    weight: 300
+  text-transform: uppercase
+
+  &:hover,
+  &:focus
+    background-color: $orange
+    color: white
+    text-decoration: none
+
+.alert-type-notice
+  background-color: $orange
+  color: white
+
+.alert-type-error,
+.alert-type-alert,
+.alert-type-danger
+  background-color: material-color('red', '600')
+  color: white
+
+.alert-type-success
+  @extend .alert-success
+
+.alert
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6
+    &:first-child
+      margin-top: 0

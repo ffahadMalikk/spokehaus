@@ -1,0 +1,17 @@
+<% if @gift.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@gift.errors.count, "error") %> prohibited this gift from being delivered:</h2>
+
+    <ul>
+    <% @gift.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @gift do |form| %>
+  <%= form.label :recipient_email %>
+  <%= form.email_field :recipient_email %>
+  <%= form.submit 'Send gift', data: { disable_with: t('label.please_wait') } %>
+<% end %>

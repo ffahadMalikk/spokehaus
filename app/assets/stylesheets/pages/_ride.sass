@@ -1,0 +1,91 @@
+#ride
+  .page-sub-section
+    max-width: $screen-lg
+    margin: 0 auto
+
+  .ride-section-list
+    +list-unstyled
+    +clearfix
+    margin-bottom: 0
+
+    li
+      +make-xs-column(12)
+      +make-sm-column(4)
+      margin-bottom: $grid-gutter-width / 2
+      color: material-color('grey', '600')
+
+    h2
+      font:
+        family: $oswald
+        size: $font-size-h4
+        weight: 400
+      text-transform: uppercase
+      color: material-color('grey', '800')
+
+    strong
+      color: material-color('grey', '700')
+
+    a
+      &:link,
+      &:hover,
+      &:focus,
+      &:visited
+        color: material-color('amber', '800')
+
+      &:active
+        color: material-color('amber', '900')
+
+  #ride-expectations
+    padding-top: $grid-gutter-width
+
+  #ride-types
+    h2
+      img
+        max-width: 100%
+        display: block
+        margin: 0 auto
+
+    // p
+      // margin-bottom: $grid-gutter-width * 2
+
+
+  #how-to-book-steps-list
+    counter-reset: how-to-book-steps
+    padding-bottom: $grid-gutter-width
+
+    a
+      display: block
+      text:
+        align: center
+        decoration: none
+      color: inherit
+
+      &:before
+        counter-increment: how-to-book-steps
+        content: counter(how-to-book-steps)
+        display: block
+        width: 1.5em
+        height: 1.5em
+        color: $orange
+        border: 2px solid $orange
+          radius: 1.5em
+        margin: auto
+        font:
+          size: floor($font-size-h1 * 2 )
+          weight: 100
+        line-height: 1.45
+
+      h2
+        color: material-color('grey', '800')
+
+      &:hover,
+      &:focus
+        color: material-color('grey', '800')
+
+        &:before
+          color: white
+          background-color: $orange
+          border-color: $orange
+
+        h2
+          color: $orange

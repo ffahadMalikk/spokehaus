@@ -1,0 +1,14 @@
+<section id='instructors-show' class='page-section' style='background-image: url(<%= image_url("instructors/large/#{@instructor.name.parameterize}.jpg") -%>)'>
+
+  <div class='container'>
+    <div class='row'>
+      <header class='page-section-header'>
+        <h1><%= @instructor.name %></h1>
+      </header>
+
+      <%= content_tag(:div, sanitize(@instructor.bio), class: 'instructor-bio') if @instructor.bio.present? %>
+
+      <%= link_to 'Book a class', calendar_path, class: 'instructor-cta' %>
+    </div>
+  </div>
+</section>

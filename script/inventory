@@ -1,0 +1,2 @@
+staging.spokehaus.ca rails_env=staging
+spokehaus.ca rails_env=production

@@ -1,0 +1,125 @@
+#instructors-show
+  background:
+    color: white
+    position: top right
+    size: auto 100%
+    repeat: no-repeat
+
+  > .container
+    padding:
+      left: $grid-gutter-width / 2
+      right: $grid-gutter-width / 2
+      bottom: $grid-gutter-width
+
+  .page-section-header
+    border-bottom: 0
+    padding-bottom: 0
+    margin:
+      top: $grid-gutter-width / 2
+      bottom: $grid-gutter-width / 2
+
+    h1
+      text-align: left
+      font:
+        size: $font-size-h2
+        weight: 700
+
+  .instructor-bio
+    color: material-color('grey')
+    line-height: 1.5
+
+  .instructor-cta
+    @extend .btn
+    background: white
+    color: $orange
+    border: 1px solid $orange
+    font:
+      family: $oswald
+      weight: 400
+    text-transform: uppercase
+    margin-top: 1em
+
+    &:after
+      +fa-icon
+      content: $fa-var-angle-right
+      margin-left: .25em
+      font-size: 1.333em
+      line-height: .666
+      // color: $orange
+      +transition(color 100ms)
+
+    &:hover,
+    &:focus
+      background-color: $orange
+      color: white
+
+      // &:after
+      //   color: white
+
+  @media only screen and (max-width: $screen-xs - 1)
+    background:
+      size: auto $screen-xs
+
+    > .container
+      margin-top: $screen-xs
+      padding:
+        left: 0
+        right: 0
+
+      > .row
+        padding:
+          left: $grid-gutter-width / 2
+          right: $grid-gutter-width / 2
+        border-top: 3px solid material-color('grey', '900')
+        margin:
+          left: -($grid-gutter-width / 2)
+          right: -($grid-gutter-width / 2)
+
+  @media only screen and (min-width: $screen-xs)
+    height: $screen-xs
+
+    > .container > .row
+      max-width: 320px
+
+    .page-section-header
+      margin-top: $grid-gutter-width
+
+  @media only screen and (min-width: 601px)
+    > .container > .row
+      max-width: 360px
+
+    .page-section-header
+      h1
+        font-size: $font-size-h1
+
+    .instructor-bio
+      font-size: $font-size-large
+      margin-bottom: $grid-gutter-width / 2
+
+  @media only screen and (min-width: $screen-sm)
+    height: auto
+
+    .page-section-header
+      margin-top: $grid-gutter-width * 2
+
+  @media only screen and (min-width: $screen-md)
+    background-position: 90% 0
+
+    > .container > .row
+      max-width: $screen-xs
+
+    .page-section-header
+      margin-top: $grid-gutter-width * 3
+
+      h1
+        font-size: floor($font-size-h1 * 1.25)
+
+  @media only screen and (min-width: $screen-lg)
+    background-position: 80% 0
+
+    > .container > .row
+      max-width: 520px
+
+    .page-section-header
+      h1
+        font-size: floor($font-size-h1 * 1.5)

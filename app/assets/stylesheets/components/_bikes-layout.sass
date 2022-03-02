@@ -1,0 +1,365 @@
+.booking-class-header-menu
+  @extend .container-fluid
+  position: relative
+  margin-top: 0
+  padding:
+    top: $grid-gutter-width / 2
+    bottom: $grid-gutter-width / 2
+  border-bottom: 1px solid material-color('grey', '300')
+  font:
+    family: $oswald
+  text-transform: uppercase
+
+  > h1
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    text-align: center
+    font:
+      size: $font-size-base
+    line-height: 1
+    color: material-color('grey')
+
+  a
+    position: relative
+    color: material-color('grey', '600')
+
+    &:hover,
+    &:focus
+      text-decoration: none
+      color: $orange
+
+  .calendar-link
+    span
+      display: none
+
+
+    &:before,
+    &:after
+      +fa-icon
+      font-size: $font-size-large
+
+    &:before
+      content: $fa-var-angle-left
+      margin-right: 0.5em
+
+    &:after
+      content: $fa-var-calendar
+
+#bikes-layout
+  $bike-width: percentage(1/16)
+  $bike-height: percentage(1/7)
+  background-color: transparent
+  padding-bottom: 0px
+  overflow-x: scroll
+  -webkit-overflow-scrolling: touch
+  +user-select(none)
+
+  .page-section-header
+    margin-top: ($grid-gutter-width / 2)
+
+  .booking-class-time
+    display: block
+    text:
+      align: center
+      transform: uppercase
+    font-size: $font-size-large
+    color: material-color('grey', '600')
+    margin: 0.25em 0
+
+  form
+    display: block
+    max-width: $screen-lg
+    margin: 0 -10px
+
+  .bikes-layout-footer
+    border-top: 1px solid material-color('grey', '300')
+    margin-top: $grid-gutter-width * 5
+    padding: $grid-gutter-width 0
+    text-align: center
+
+    input[type='submit']
+      background-color: material-color('grey', '900')
+      color: material-color('grey', '50')
+      font:
+        family: $oswald
+        weight: 400
+      text-transform: uppercase
+
+      &:hover,
+      &:focus
+        background-color: $orange
+        border-color: $orange
+        color: white
+
+      &:active
+        background-color: $orange-dark
+        border-color: $orange-dark
+
+  .bikes-layout-outer-wrapper
+    min-width: 300px
+
+  .bikes-layout-inner-wrapper
+    display: block
+    position: relative
+    height: 0
+    padding-top: $bike-width * 6
+    +font-smoothing(antialiased)
+
+    label > *
+      pointer-events: none
+
+    input
+      &[type='submit']
+        position: absolute
+        top: 0
+
+      &[type='radio'],
+      &[type='checkbox']
+        position: absolute
+        top: 0
+        left: -9999999em
+
+    .instructor,
+    .bikes-layout-bike
+      display: block
+      position: absolute
+      height: 0
+      font:
+        size: $font-size-small
+        family: $oswald
+        weight: 400
+
+      span,
+      a
+        display: block
+        position: absolute
+        box-sizing: border-box
+
+      > span,
+      > a
+        top: -2px
+        left: -2px
+        right: -2px
+        bottom: -2px
+        background: transparent center center no-repeat
+          size: cover
+        color: material-color('grey', '600')
+        border-radius: 100%
+
+        > span
+          top: 0
+          left: 0
+          right: 0
+          bottom: 0
+          line-height: 1.125
+          height: 1em
+          margin: auto
+          text-align: center
+
+    .wall
+      position: absolute
+      height: $bike-height * 1.22
+      background-color: material-color('grey', '600')
+      width: $bike-width / 10
+      border-radius: 3px
+      left: $bike-width * ((5.83 * 1.25) + 0.78)
+      top: $bike-height * 7.4
+
+    .fan-1, .fan-2
+      position: absolute
+      width: $bike-width * 0.75
+      height: $bike-height * 0.88
+      top: -5px
+      background: image-url('fan.png') left center no-repeat
+      background-size: 100%
+
+    .fan-1
+      left: $bike-width * 2.8
+
+    .fan-2
+      left: $bike-width * 12.65
+
+    .instructor
+      top: 0
+      left: 0
+      right: 0
+      width: $bike-width * 3
+      padding-top: $bike-width * 3
+      margin: auto
+
+      > a
+        top: 0
+        background: material-color('grey', '500')
+          size: cover
+          position: center center
+          repeat: no-repeat
+
+        > span
+          top: -1.5em
+          bottom: auto
+          font-family: $oswald
+          text:
+            align: center
+            transform: uppercase
+          white-space: nowrap
+          color: material-color('grey', '900')
+
+        &:hover,
+        &:focus
+          background-color: material-color('grey', '900')
+
+          > span
+            color: $orange
+
+
+    .bikes-layout-bike
+      width: $bike-width
+      padding-top: $bike-width
+      cursor: pointer
+
+      > span
+        background-color: #fdfdfd
+        border: 1px solid material-color('grey', '300')
+        box-shadow: 0 0 0 0 rgba(black, 0)
+        -webkit-transform: scale3d(1, 1, 1)
+        -ms-transform: scale3d(1, 1, 1)
+        -o-transform: scale3d(1, 1, 1)
+        transform: scale3d(1, 1, 1)
+        +transition-property(background-color color box-shadow transform border-color)
+        +transition-duration(100ms)
+
+      &:hover,
+      &:focus
+        > span
+          background-color: white
+          color: material-color('grey', '900')
+          box-shadow: 0 5px 15px 1px rgba(black, .15), 0 2px 4px 1px rgba(black, .2)
+          -webkit-transform: scale3d(1.1, 1.1, 1)
+          -ms-transform: scale3d(1.1, 1.1, 1)
+          -o-transform: scale3d(1.1, 1.1, 1)
+          transform: scale3d(1.1, 1.1, 1)
+
+      &:nth-of-type(-n+5)
+        top: $bike-height * 1
+
+      &:nth-of-type(n+6):nth-of-type(-n+10)
+        top: $bike-height * 2.5
+
+      &:nth-of-type(n+11):nth-of-type(-n+15)
+        top: $bike-height * 4
+
+      &:nth-of-type(n+16):nth-of-type(-n+28)
+        top: $bike-height * 5.7
+
+      &:nth-of-type(n+29):nth-of-type(-n+39)
+        top: $bike-height * 7.4
+
+      &:nth-of-type(1),
+      &:nth-of-type(6),
+      &:nth-of-type(11)
+        left: $bike-width * 1.8
+
+      &:nth-of-type(2),
+      &:nth-of-type(7),
+      &:nth-of-type(12)
+        left: $bike-width * 3.6
+
+      &:nth-of-type(3),
+      &:nth-of-type(8),
+      &:nth-of-type(13)
+        left: $bike-width * 11
+
+      &:nth-of-type(4),
+      &:nth-of-type(9),
+      &:nth-of-type(14)
+        left: $bike-width * 12.5
+
+      &:nth-of-type(5),
+      &:nth-of-type(10),
+      &:nth-of-type(15),
+        left: $bike-width * 14
+
+      @for $i from 16 through 17
+        &:nth-of-type(#{$i})
+          left: $bike-width * (($i - 16) * 1.25)
+
+      @for $i from 18 through 28
+        &:nth-of-type(#{$i})
+          left: $bike-width * (($i - 16) * 1.25 + 0.3)
+
+      @for $i from 29 through 30
+        &:nth-of-type(#{$i})
+          left: $bike-width * ((($i - 29) * 1.25))
+
+      @for $i from 31 through 34
+        &:nth-of-type(#{$i})
+          left: $bike-width * ((($i - 29) * 1.25) + 0.5)
+
+      @for $i from 35 through 39
+        &:nth-of-type(#{$i})
+          left: $bike-width * ((($i - 29) * 1.25) + 1)
+
+      &.reserved,
+      &.unavailable
+        cursor: default
+
+        > span
+          background-color: material-color('grey', '200')
+          color: material-color('grey', '400')
+          box-shadow: 0 0 0 rgba(black, 0)
+          -webkit-transform: scale3d(1, 1, 1)
+          -ms-transform: scale3d(1, 1, 1)
+          -o-transform: scale3d(1, 1, 1)
+          transform: scale3d(1, 1, 1)
+
+    input[type='checkbox']:checked + .bikes-layout-bike
+      > span
+        background-color: $orange
+        color: white
+        box-shadow: 0 0 0 0 rgba(black, 0)
+        -webkit-transform: scale3d(1, 1, 1)
+        -ms-transform: scale3d(1, 1, 1)
+        -o-transform: scale3d(1, 1, 1)
+        transform: scale3d(1, 1, 1)
+
+  @media only screen and (min-width: 521px)
+    .bikes-layout-inner-wrapper
+      .instructor > a > span
+        top: auto
+        bottom: -1.5em
+
+  @media only screen and (min-width: $screen-sm-min)
+    .bikes-layout-inner-wrapper
+      .instructor,
+      .bikes-layout-bike
+        font-size: $font-size-base
+
+        > span
+          top: 0
+          left: 0
+          right: 0
+          bottom: 0
+
+  @media only screen and (min-width: $screen-sm-min) and (max-width: $screen-lg)
+    width: auto
+
+  @media only screen and (min-width: $screen-md-min)
+    padding-bottom: $grid-gutter-width * 2
+
+    form
+      margin: 0 auto
+
+    .bikes-layout-footer
+      input[type='submit']
+        font-size: $font-size-large
+        padding: .5em 1em
+
+    .bikes-layout-inner-wrapper
+      .instructor,
+      .bikes-layout-bike
+        font-size: $font-size-h4
+
+      .instructor > a > span
+        font-size: $font-size-large

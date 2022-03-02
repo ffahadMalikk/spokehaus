@@ -1,0 +1,131 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  date:
+    formats:
+      short_day: '%b %-d'
+      day_number: '%-d'
+      cc: '%b/%y'
+      profile_birthdate: '<span class="month">%b</span> <span class="day">%-d</span> <span class="year">%Y</span>'
+  time:
+    formats:
+      short_day: '%b %-d'
+      day_number: '%-d'
+      short_time: '%l:%M%P'
+      long: '%b %-d at %l:%M%P'
+      booking: '%b %-d, %Y - %l:%M%P'
+  meta:
+    title:
+      default: 'Kick-ass, high intensity, low impact spinning classes in Toronto'
+      pages:
+        experience: 'Experience - A musical and physical journey that will change your body and mind'
+        ride: 'Ride - What to expect and how to get started'
+        terms-and-conditions: 'Terms and Conditions'
+        privacy-policy: 'Privacy Policy'
+      packages:
+        index: 'Buy Ride Credits'
+      instructors:
+        index: 'Haüs Masters - Meet our spinning instructors'
+      calendar: 'Book a Spinning Class - Week of %{range}'
+      bookings: 'Choose Your Bike - %{class_name} - %{class_time}'
+      sessions:
+        new: 'Sign into your account'
+      registrations:
+        new: 'Register'
+      devise:
+        passwords:
+          new: 'Forgot your password?'
+      user:
+        profile: "%{user}'s Profile"
+    description:
+      default: 'A full-body cardio party on a bike, with specially curated music that will push you out of your comfort zone and help you get lost in the movement'
+      pages:
+        experience: 'Every 45 minutes we bring down the house with specially curated music that will push you out of your comfort zone and help you get lost in the movement.'
+        ride: 'We offer complimentary cycling shoes at check-in (or bring your own). Filtered water stations and bottled water available. Book your class today!'
+      packages:
+        index: 'Each credit is valid for 1 class. Purchased credits are stored in your account until you use them. 1st ride is free (for a limited time).'
+      calendar: 'Calendar of available spinning classes for the week of %{range}. Choose the date and time that better suits your schedule.'
+      bookings: 'Class: %{class_name}, Date: %{class_date}, Time: %{class_time}, Instructor: %{class_instructor}'
+  must_have_2_parts: 'Must have at least 2 parts'
+  successful_booking: 'You are now booked for %{class_name} on %{start_time} with %{instructor_name}.'
+  failed_to_book: 'Unable to book at this time.'
+  booking_pending_registration: 'Please register or sign-in to complete your booking'
+  booking_canceled: 'Your booking was cancelled'
+  booking_not_canceled: 'Failed to cancel your booking, please contact us'
+  insufficient_credits: 'You need ride credits to complete your booking'
+  label:
+    use_my_card: 'Use my credit card on file'
+    provide_credit_card_info: 'Provide my credit card info'
+    cancel_booking: 'Cancel booking'
+    cancel_waitlist: 'Remove me from waitlist'
+    please_wait: 'Please wait...'
+    send_gift: 'Send your friend a credit'
+    back_to_calendar: 'Back to Calendar'
+    profile: 'Profile'
+  notice:
+    gift_sent: "Your gift was sent"
+    need_more_credits_for_more_bikes: "You need more credits to add more bikes"
+  error:
+    no_credits_to_gift: "You don't have any credits to give"
+  unable_to_complete_purchase: 'Unable to complete your purchase'
+  packages:
+    authorization_failed: "Credit card authorization failed"
+    unexpected_error: "An unexpected error occurred while processing the purchase"
+    title: Ride Credits
+    lead1: Buy credits for multiple classes, bring a friend, or both! A credit is valid for 1 ride.
+    lead2: Credits are stored in your account until you use them with no expiry.
+    tax_disclaimer: "*All prices listed do not include HST."
+    unlimited: 'UNLIMITED'
+    buy_cta:
+      guest: 'Login to Buy'
+      user: 'Buy Credits'
+    book_cta: 'Book Class'
+    intro_offer: 'Intro Offer'
+    plus_gift_credit:
+      one: '+1 Gift Credit *'
+      other: '+%{count} Gift Credits'
+    whats_included: 'All prices include shoes, towel service (yes, that means the cold eucalyptus towels too), and lockers.'
+    success:
+        title:
+          unlimited: 'Unlimited credits were added to your account'
+          one: 'Your credit was added to your account'
+          other: '%{count} credits were added to your account'
+  bookings:
+    youre_booked_notice: "You&rsquo;re booked for this class"
+    select_bikes: "Select your bike(s)"
+    submit: 'Complete Booking'
+    cancel_confirm_early: 'Are you sure you wish to cancel this booking?'
+    cancel_confirm_late: |
+      Are you sure you wish to cancel this booking?
+
+      Because you are cancelling less than 6 hours before the class you will lose your ride credit.
+
+      If you are an unlimited package holder you will automatically be charged a $12.50 late cancellation fee.
+  sign_ups_sheet:
+    no_sign_ups: 'No one has signed-up for this class'
+  waitlist:
+    cancel_confirm: 'Are you sure you want to remove yourself from the waitlist?'
+    already_booked: 'You are already booked in this class!'
+    add: 'You have been successfully added to the waitlist'
+    add_failed: 'There was an error adding you to the waitlist'
+    remove: 'You have been successfully removed from the waitlist'
+    remove_failed: 'An error occurred when removing your waitlist spot'

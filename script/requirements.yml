@@ -1,0 +1,8 @@
+- src: williamyeh.reset-locale
+- src: ANXS.postgresql
+- src: rvm_io.rvm1-ruby
+- src: DavidWittman.redis
+- src: ANXS.monit
+- src: https://github.com/repositive/nginx
+  version: master
+  name: ANXS.nginx

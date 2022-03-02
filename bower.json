@@ -1,0 +1,9 @@
+{
+  "name":    "spokehaus.ca",
+  "private": true,
+  "dependencies": {
+    "fastclick":                "1.0.6",
+    "jquery.smartresize":       "1.0.0",
+    "bootstrap-carousel-swipe": "#master"
+  }
+}

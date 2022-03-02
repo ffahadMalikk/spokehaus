@@ -1,0 +1,54 @@
+#instructors-index
+  .page-section-header
+    display: none
+
+  .instructors-container
+    +make-row
+    +clearfix
+
+  .instructor
+    +make-xs-column(12)
+    +make-sm-column(6)
+    +make-lg-column(4)
+    position: relative
+    text-align: center
+    color: material-color('grey', '300')
+    padding: 0
+    border: 1px solid material-color('grey', '50')
+
+    header
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      padding: $padding-large-vertical ($grid-gutter-width / 2)
+
+      h1
+        font:
+          family: $oswald
+          weight: 700
+          size: $font-size-h3
+        text:
+          align: left
+          transform: uppercase
+        color: material-color('grey', '900')
+
+    > a
+      display: block
+      width: 100%
+      padding: 90% 0 0
+      text-decoration: none
+      background:
+        size: cover
+        position: bottom center
+        repeat: no-repeat
+
+      &:hover,
+      &:focus
+        header h1
+          color: $orange
+
+  @media only screen and (min-width: 601px)
+    .instructor
+      header h1
+        font-size: $font-size-h2

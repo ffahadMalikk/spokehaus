@@ -1,0 +1,10 @@
+/var/log/redis/*.log {
+  weekly
+  missingok
+  rotate 52
+  compress
+  delaycompress
+  notifempty
+  dateext
+  create 0660 {{redis_user}} {{redis_group}}
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <soap:Body>
+    <GetClientsResponse xmlns="http://clients.mindbodyonline.com/api/0_5">
+      <GetClientsResult>
+        <Status>Success</Status>
+        <ErrorCode>200</ErrorCode>
+        <XMLDetail>Full</XMLDetail>
+        <ResultCount>1</ResultCount>
+        <CurrentPageIndex>0</CurrentPageIndex>
+        <TotalPageCount>1</TotalPageCount>
+        <Clients>
+          <Client>
+            <Notes/>
+            <AppointmentGenderPreference>None</AppointmentGenderPreference>
+            <IsCompany>false</IsCompany>
+            <CustomClientFields>
+              <CustomClientField>
+                <ID>31</ID>
+                <DataType>Double</DataType>
+                <Name>Shoe Size</Name>
+                <Value>10.5</Value>
+              </CustomClientField>
+            </CustomClientFields>
+            <LiabilityRelease>false</LiabilityRelease>
+            <PromotionalEmailOptIn>true</PromotionalEmailOptIn>
+            <ID>24</ID>
+            <FirstName>Ben</FirstName>
+            <LastName>Moss</LastName>
+            <Email>ben@unspace.ca</Email>
+            <EmailOptIn>false</EmailOptIn>
+            <State>ON</State>
+            <Country>CA</Country>
+            <BirthDate>1976-09-06T00:00:00</BirthDate>
+            <FirstAppointmentDate xsi:nil="true"/>
+            <IsProspect>false</IsProspect>
+            <Status>Non-Member</Status>
+          </Client>
+        </Clients>
+      </GetClientsResult>
+    </GetClientsResponse>
+  </soap:Body>
+</soap:Envelope>

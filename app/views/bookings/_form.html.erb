@@ -1,0 +1,62 @@
+<%- meta @booking.meta -%>
+
+
+<menu class='booking-class-header-menu'>
+  <h1><%= t('bookings.select_bikes') -%></h1>
+
+  <%= link_to calendar_path, class: 'calendar-link' do %>
+    <span><%= t('label.back_to_calendar') -%></span>
+  <%- end -%>
+</menu>
+
+<section id='bikes-layout' class='page-section'>
+  <header class='page-section-header'>
+    <h1 class='booking-class-name'><%= @booking.class_name %></h1>
+    <time class='booking-class-time'><%= @booking.time %></time>
+  </header>
+
+  <%= form_for @booking, url: url, method: method do |form| %>
+    <div class='bikes-layout-outer-wrapper'>
+      <div class='bikes-layout-inner-wrapper'>
+        <div class='instructor'>
+          <%= link_to (@booking.instructor.present? ? instructor_path(@booking.instructor) : '#'), style: "background-image: url(#{image_url(@booking.instructor_image_url)})" do %>
+            <span><%= @booking.instructor.try(:name) || "Unknown Instructor" -%></span>
+          <%- end -%>
+        </div>
+        <div class="wall"></div>
+        <div class="fan-1"></div>
+        <div class="fan-2"></div>
+        <% @booking.bikes.each do |bike| %>
+          <%= form.check_box :bike_ids, bike.selector_options, bike.id, nil %>
+          <%= form.label "bike_ids_#{bike.id}", class: ['bikes-layout-bike'] + bike.states do %>
+            <span><span><%= bike.position -%></span></span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <%- if !@booking.scheduled_class.at_capacity? %>
+      <footer class='bikes-layout-footer'>
+        <%= form.submit t('bookings.submit'), data: { disable_with: t('label.please_wait') } %>
+      </footer>
+    <%- end %>
+  <% end %>
+
+  <%- if @booking.scheduled_class.at_capacity? || @booking.scheduled_class.waitlist_entries.emailed.where(user: current_user).exists? %>
+    <footer class='bikes-layout-footer'>
+      <%= render "waitlist_entries/form", scheduled_class: @booking.scheduled_class %>
+    </footer>
+  <%- end %>
+</section>
+
+<%- if current_or_guest_user.admin? -%>
+  <%- content_for :actions_footer do -%>
+    <%= link_to('Sign-up Sheet', sign_up_sheet_path(@booking.scheduled_class), role: :button, class: 'primary-action button-sign-up-sheet') %>
+  <%- end -%>
+<%- end -%>
+
+<%- if content_for?(:actions_footer) -%>
+  <footer class='actions'>
+    <%= yield :actions_footer %>
+  </footer>
+<%- end -%>

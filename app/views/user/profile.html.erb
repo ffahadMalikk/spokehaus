@@ -1,0 +1,159 @@
+<%-
+meta  title: t('meta.title.user.profile', user: @user.first_name).html_safe
+-%>
+<section id='user-profile' class='page-section'>
+  <header class='page-section-header'>
+    <h1><%= @user.name %></h1>
+  </header>
+
+  <div class='container'>
+    <div class='row'>
+      <section class='user-profile-info'>
+        <article class='user-profile-credits'>
+          <h1>Credits</h1>
+          <span>
+            <%- if @credits > Package::UNLIMITED_THRESHOLD %>
+              <span style="font-size: 0.4em; position: relative; top: -10px;">UNLIMITED</span>
+            <%- else %>
+              <%= @credits -%>
+            <%- end %>
+          </span>
+        </article>
+
+        <article class='user-profile-shoe-size'>
+          <h1>Shoe Size</h1>
+          <span><%= @user.shoe_size -%></span>
+        </article>
+
+        <article class='user-profile-birthdate'>
+          <h1>Birthdate</h1>
+          <span><%= l(@user.birthdate, format: :profile_birthdate).html_safe -%></span>
+        </article>
+      </section>
+
+      <section class='user-profile-classes'>
+        <div class='table-responsive'>
+          <table>
+            <caption>My Bookings</caption>
+            <thead>
+              <tr>
+                <th class='date'>Date</th>
+                <th class='class'>Class</th>
+                <th class='bike'>Bikes</th>
+                <th class='instructor'>Instructor</th>
+                <th class='cancel'>Cancel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%- @schedule.each do |booking| -%>
+                <%-
+                bc = booking.scheduled_class
+                bc_date = l(bc.start_time, format: :booking)
+                -%>
+                <tr class='<%= "cancelled" if bc.canceled? -%>'>
+                  <td class='date'><%= bc.canceled? ? bc_date : link_to(bc_date, edit_booking_path(booking)) -%></td>
+                  <td class='class'><%= bc.name %></td>
+                  <td class='bike'><%= booking.bikes.map(&:position).join(', ') -%></td>
+                  <td class='instructor'><%= bc.instructor_name -%></td>
+                  <td class='cancel'><%= cancel_booking_button booking -%></td>
+                </tr>
+              <%- end -%>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class='user-profile-classes'>
+        <div class='table-responsive'>
+          <table>
+            <caption>Waitlisted Classes</caption>
+            <thead>
+              <tr>
+                <th class='date'>Date</th>
+                <th class='class'>Class</th>
+                <th class='instructor'>Instructor</th>
+                <th class='cancel'>Cancel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%- @waitlist_entries.each do |entry| -%>
+                <%-
+                  sc = entry.scheduled_class
+                  sc_date = l(sc.start_time, format: :booking)
+                -%>
+                <tr>
+                  <td class='date'><%= link_to(sc_date, new_scheduled_class_booking_path(sc)) %></td>
+                  <td class='class'><%= sc.name %></td>
+                  <td class='instructor'><%= sc.staff.name -%></td>
+                  <td class='cancel'>
+                    <%= button_to(scheduled_class_waitlist_entry_path(sc, entry), method: :delete, data: { confirm: t('waitlist.cancel_confirm') }, class: 'button-cancel') { t('label.cancel_waitlist') } %>
+                  </td>
+                </tr>
+              <%- end -%>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class='user-profile-classes'>
+        <div class='table-responsive'>
+          <table>
+            <caption>Active Packages</caption>
+            <thead>
+              <tr>
+                <th class='date'>Activated</th>
+                <th class='instructor'>Expires</th>
+                <th class='class'>Name</th>
+                <th class='instructor'>Remaining Credits</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%- @client_services.each do |item| -%>
+                <tr>
+                  <td class='date'><%= l(item[:active_date], format: :booking) rescue 'n/a' %></td>
+                  <td class='date'><%= l(item[:expiration_date], format: :booking) rescue 'n/a' %></td>
+                  <td class='class'><%= item[:name] %></td>
+                  <td class='instructor'><%= item[:remaining].to_i > Package::UNLIMITED_THRESHOLD ? 'Unlimited' : item[:remaining] -%></td>
+                </tr>
+              <%- end -%>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class='user-profile-classes'>
+        <div class='table-responsive'>
+          <table>
+            <caption>Purchase history</caption>
+            <thead>
+              <tr>
+                <th class='date'>Purchase Date</th>
+                <th class='class'>Name</th>
+                <th class='instructor'>Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%- @purchases.each do |item| -%>
+                <tr>
+                  <td class='date'><%= l(item[:sale][:sale_date_time], format: :booking) %></td>
+                  <td class='class'><%= item[:description] %></td>
+                  <td class='instructor'>$<%= '%.2f' % item[:amount_paid] -%></td>
+                </tr>
+              <%- end -%>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+    <footer class='actions'>
+      <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: 'sign-out'%>
+      <%= link_to 'Update', edit_user_registration_path, role: :button, class: 'primary-action' %>
+      <%- if Flags.friend_credits? && @user.has_credits_to_give? -%>
+        <%= link_to t('label.send_gift'), new_gift_path, role: :button, class: 'primary-action' %>
+      <%- end -%>
+    </footer>
+  </div>
+
+</section>

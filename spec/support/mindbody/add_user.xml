@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <soap:Body>
+    <AddOrUpdateClientsResponse xmlns="http://clients.mindbodyonline.com/api/0_5">
+      <AddOrUpdateClientsResult>
+        <Status>Success</Status>
+        <ErrorCode>200</ErrorCode>
+        <XMLDetail>Full</XMLDetail>
+        <ResultCount>0</ResultCount>
+        <CurrentPageIndex>0</CurrentPageIndex>
+        <TotalPageCount>0</TotalPageCount>
+        <Clients>
+          <Client>
+            <AppointmentGenderPreference>None</AppointmentGenderPreference>
+            <IsCompany>false</IsCompany>
+            <LiabilityRelease>false</LiabilityRelease>
+            <PromotionalEmailOptIn>true</PromotionalEmailOptIn>
+            <Action>Added</Action>
+            <ID>23</ID>
+            <FirstName>Super</FirstName>
+            <MiddleName>Amazing</MiddleName>
+            <LastName>User</LastName>
+            <Email>super+amazing@user.ca</Email>
+            <EmailOptIn>false</EmailOptIn>
+            <State>ON</State>
+            <Country>CA</Country>
+            <BirthDate>1976-09-06T00:00:00</BirthDate>
+            <FirstAppointmentDate>2015-11-18T18:53:42.8470654-08:00</FirstAppointmentDate>
+            <IsProspect>false</IsProspect>
+          </Client>
+        </Clients>
+      </AddOrUpdateClientsResult>
+    </AddOrUpdateClientsResponse>
+  </soap:Body>
+</soap:Envelope>

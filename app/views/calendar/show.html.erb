@@ -1,0 +1,45 @@
+<%-
+week_range = @calendar.range
+meta_range = strip_tags(week_range)
+meta_title = t('meta.title.calendar', range: meta_range)
+meta_description = t('meta.description.calendar', range: meta_range)
+
+meta  title: meta_title,
+      description: meta_description,
+      rel: {
+        prev: @calendar.previous,
+        next: @calendar.next
+      },
+      og: {
+        title: meta_title,
+        description: meta_description
+      }
+-%>
+<section id='booking-calendar'>
+  <header class='booking-calendar-header'>
+    <h1><%== week_range -%></h1>
+    <%= link_to '<span>Previous</span>'.html_safe, @calendar.previous, class: 'previous' if @calendar.has_previous? -%>
+    <%= link_to '<span>Next</span>'.html_safe, @calendar.next, class: 'next' if @calendar.has_next? -%>
+  </header>
+
+  <ul class='booking-calendar-week'>
+    <%- @calendar.days.each do |day| -%>
+      <li class='booking-calendar-day'>
+        <h2><strong><%= day.date.strftime('%-d') -%></strong> <%= day.date.strftime('%a') -%></h2>
+
+        <ul class='booking-calendar-day-classes'>
+          <%- day.scheduled_classes.each do |c| %>
+            <%= content_tag :li, class: ['booking-calendar-class'] + c.states do %>
+              <%= link_to new_or_edit_path(c) do %>
+                <time class='booking-calendar-class-time'><%= l(c.start_time, format: :short_time) %></time>
+                <h3 class='booking-calendar-class-name'><%= c.name %></h3>
+                <div class='booking-calendar-class-instructor'><%= instructor_name(c) -%></div>
+                <div class='booking-calendar-class-duration'><%= duration(c) %></div>
+              <%- end -%>
+            <%- end -%>
+          <%- end -%>
+        </ul>
+      </li>
+    <%- end -%>
+  </ul>
+</section>

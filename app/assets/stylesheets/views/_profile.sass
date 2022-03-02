@@ -1,0 +1,191 @@
+#user-profile
+  .user-profile-info
+    +make-xs-column(12)
+    +make-md-column(2)
+    color: material-color('grey', '700')
+    padding: 0
+
+    article
+      +make-xs-column(4)
+      +make-md-column(12)
+      position: relative
+      text-align: center
+      padding: 0
+      margin-bottom: $grid-gutter-width
+
+      > h1
+        position: absolute
+        left: 0
+        right: 0
+        bottom: 0
+        font:
+          family: $oswald
+          weight: 400
+          size: $font-size-base
+        text:
+          transform: uppercase
+          overflow: ellipsis
+        white-space: nowrap
+        overflow: hidden
+        color: material-color('grey')
+        margin: 0
+
+      > span
+        display: block
+        width: $grid-gutter-width * 3
+        height: $grid-gutter-width * 3
+        font:
+          size: $font-size-h2
+          weight: 700
+        line-height: 3.2
+        border-radius: $grid-gutter-width * 3
+        margin: 0 auto ($grid-gutter-width - 4)
+        overflow: hidden
+        background-color: material-color('grey', '800')
+        color: white
+
+      &.user-profile-credits > span
+        font-size: floor($font-size-h1 * 1.25)
+        line-height: 2.1
+        background-color: $orange
+        color: white
+
+      &.user-profile-birthdate > span
+        line-height: 1
+
+        span
+          display: block
+          line-height: 1
+
+        .month,
+        .year
+          font:
+            size: $font-size-base
+            weight: 400
+          color: material-color('grey', '400')
+
+        .month
+          padding: .75em 0 0
+
+        .day
+          font-size: $font-size-h1
+
+  .user-profile-classes
+    +make-xs-column(12)
+    +make-md-column(9)
+    +make-md-column-offset(1)
+    float: right !important
+    padding: 0
+
+    .table-responsive
+      border: 0 !important
+
+    table
+      @extend .table
+      color: material-color('grey')
+
+      a
+        color: material-color('grey', '800')
+
+      caption
+        font:
+          family: $oswald
+          size: $font-size-h3
+          weight: 400
+        text:
+          transform: uppercase
+          // align: center
+        color: material-color('grey', '800')
+
+      thead
+        tr
+          th
+            font:
+              family: $oswald
+              weight: 400
+            text:
+              transform: uppercase
+            background: material-color('grey', '100')
+            color: material-color('grey', '600')
+            border-bottom: 0
+
+      tbody
+        tr:first-of-type
+          td
+            border-top: 0
+
+      .class,
+      .bike,
+      .instructor,
+      .cancel
+        text-align: center
+
+      .instructor
+        display: none
+
+      .cancel button
+        +text-hide
+
+        &:before
+          font-size: $font-size-base
+          color: material-color('grey', '600')
+          margin-right: 0
+
+        &:hover,
+        &:focus
+          color: $orange
+
+  footer.actions
+    border-top: 1px solid material-color('grey', '200')
+
+    button,
+    input[type='submit'],
+    a[role='button'],
+    a.button
+      background-color: material-color('grey', '100')
+      color: material-color('grey', '700')
+
+      &.primary-action
+        background-color: material-color('grey', '800')
+        color: white
+
+      &:hover,
+      &:focus
+        background-color: $orange
+        color: white
+
+      &:active
+        background-color: $orange-dark
+        color: white
+
+  @media only screen and (min-width: $screen-xs-min)
+    .user-profile-info article
+      > span
+        width: $grid-gutter-width * 4
+        height: $grid-gutter-width * 4
+        font:
+          size: $font-size-h1
+          weight: 700
+        line-height: 3.4
+        border-radius: $grid-gutter-width * 4
+
+      &.user-profile-credits > span
+        font-size: floor($font-size-h1 * 1.5)
+        line-height: 2.25
+
+      &.user-profile-birthdate > span
+        line-height: 1
+
+        .month,
+        .year
+          font:
+            size: $font-size-large
+
+        .month
+          padding-bottom: .2em
+
+        .day
+          font-size: floor($font-size-h1 * 1.5)
+
+    .user-profile-classes table .instructor
+      display: table-cell

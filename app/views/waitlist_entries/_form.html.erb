@@ -1,0 +1,32 @@
+<%- entries = scheduled_class.waitlist_entries %>
+
+<%- if current_user.try(:registered?) %>
+  <%- users_entry = entries.find_by(user: current_user) %>
+  <%- if users_entry.present? %>
+    <%- if users_entry.queued? %>
+      <%- if users_entry.was_emailed? %>
+        <p>Sorry, it looks like someone else accepted the spot that you were emailed about! You have been put back on the waitlist.</p>
+        <p>You will be emailed again if another spot opens up.</p>
+      <%- end %>
+      <h2>
+        <%- if entries.count == 1 %>
+          You are the only one on the waitlist!
+        <%- else %>
+          You are on the waitlist along with <%= entries.count - 1 %> other <%= entries.count-1 == 1 ? 'person' : 'people' %>.
+        <%- end %>
+        <br>
+        If a spot opens up we will email you.
+      </h2>
+      <%= button_to "Remove me from waitlist", scheduled_class_waitlist_entry_path(scheduled_class, users_entry), method: :delete, data: { confirm: "Are you sure?" } %>
+    <%- elsif users_entry.emailed? && users_entry.booking.present? %>
+      <h2>A spot is available on bike <%= users_entry.booking.bike_ids.first %>!</h2>
+      <%= link_to "Accept", accept_scheduled_class_waitlist_entries_path(scheduled_class), role: :button, class: 'button-secondary-action' %>
+      <%= link_to "Decline", decline_scheduled_class_waitlist_entries_path(scheduled_class), role: :button, class: 'button-primary-action' %>
+    <%- end %>
+  <%- else %>
+    <h2>There <%= entries.count == 1 ? 'is' : 'are' %> <%= entries.count %> <%= entries.count == 1 ? 'person' : 'people' %> on the waitlist.</h2>
+    <%= button_to "Add me to the waitlist", scheduled_class_waitlist_entries_path(scheduled_class, users_entry), method: :post %>
+  <%- end %>
+<%- else %>
+  <h2>You must complete your registration in order to be added to the waitlist.</h2>
+<%- end %>

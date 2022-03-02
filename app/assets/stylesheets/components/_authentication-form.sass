@@ -1,0 +1,44 @@
+#authentication-form
+  padding-bottom: $grid-gutter-width * 3
+
+  form
+    max-width: $screen-xs
+
+  .page-section-header
+    +make-row
+    max-width: $screen-xs
+    padding: 0
+    border-bottom: 0
+    margin:
+      left: auto
+      right: auto
+
+    h1,
+    a
+      +make-xs-column(4)
+      position: relative
+      font:
+        size: $font-size-base
+        family: $oswald
+      line-height: 1
+      text:
+        transform: uppercase
+        align: center
+      padding: ($grid-gutter-width / 2) 0
+      border-bottom: 3px solid white
+
+    a
+      font-weight: 400
+      color: material-color('grey', '400')
+      border-bottom-color: material-color('grey', '200')
+
+      &:hover,
+      &:focus
+        text-decoration: none
+        color: material-color('grey', '600')
+        border-bottom-color: material-color('grey', '400')
+
+    h1
+      font-weight: 700
+      color: material-color('grey', '800')
+      border-bottom-color: material-color('grey', '800')

@@ -1,0 +1,46 @@
+<section id='authentication-form' class='page-section'>
+  <header class='page-section-header'>
+    <%= link_to 'Sign In', user_session_path -%>
+    <h1>Register</h1>
+    <%= link_to 'Forgot', new_password_path(resource_name) -%>
+  </header>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+    <p class='info'>All fields are required.</p>
+
+    <%= devise_error_messages! %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+
+    <div class="field">
+      <%= f.label :shoe_size %>
+      <%= f.text_field :shoe_size %>
+      <p class='help-block'>So we can have your size ready when you arrive!</p>
+    </div>
+
+    <div class="field">
+      <%= f.label :birthdate, 'birthdate' %>
+      <%= f.date_field :birthdate %>
+      <p class='help-block'>So we know when to give you your gift&mdash;all birthday rides are on the HA&Uuml;S!</p>
+    </div>
+
+    <!-- TODO password confirmation -->
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Register", class: 'primary-action', data: { disable_with: t('label.please_wait') } %>
+    </div>
+  <% end %>
+</section>

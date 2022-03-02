@@ -1,0 +1,240 @@
+#booking-calendar
+  @extend .container-fluid
+  +font-smoothing(antialiased)
+
+  .booking-calendar-header
+    position: relative
+    color: material-color('grey', '500')
+    padding:
+      top: $padding-large-vertical
+      bottom: $padding-large-vertical
+    border-bottom: 1px solid material-color('grey', '300')
+    margin: $grid-gutter-width 0
+    +make-row
+    +font-smoothing(antialiased)
+
+    h1
+      margin: 0
+      font:
+        family: $oswald
+        weight: 400
+        size: $font-size-h3
+      text:
+        transform: uppercase
+        align: center
+      color: material-color('grey', '600')
+
+      span
+        font-family: $roboto-condensed
+        color: material-color('grey', '400')
+
+    a
+      display: block
+      position: absolute
+      height: 1.2em
+      top: 0
+      bottom: 0
+      padding: 0 ($grid-gutter-width / 2) 2px
+      margin: auto
+      line-height: 1
+      text-transform: uppercase
+      font-size: $font-size-h2
+      color: inherit
+      +font-smoothing(antialiased)
+      +transition(color 150ms)
+
+      span
+        display: none
+
+      &:hover,
+      &:focus
+        color: $orange
+        text-decoration: none
+
+      &.previous
+        left: 0
+
+        &:before
+          +fa-icon
+          content: $fa-var-angle-left
+          margin-right: .5em
+          vertical-align: top
+
+      &.next
+        right: 0
+
+        &:after
+          +fa-icon
+          content: $fa-var-angle-right
+          margin-left: .5em
+          vertical-align: top
+
+  .booking-calendar-week
+    +list-unstyled
+    +clearfix
+
+  .booking-calendar-day
+    box-sizing: border-box
+    padding: 0
+    margin: 0 0 $grid-gutter-width
+
+    h2
+      font:
+        family: $oswald
+        size: $font-size-h4
+        weight: 300
+      text:
+        align: center
+        transform: uppercase
+      padding: $padding-large-vertical 0
+      margin: 0 0 2px
+      color: material-color('grey', '500')
+
+      strong
+        font-weight: 400
+        color: material-color('grey', '600')
+
+      &,
+      strong
+        +transition(color 100ms)
+
+    &:hover
+      h2
+        color: material-color('grey', '700')
+        font-weight: 400
+
+      strong
+        color: material-color('grey', '800')
+        font-weight: 700
+
+  .booking-calendar-day-classes
+    +list-unstyled
+
+  .booking-calendar-class
+    position: relative
+    margin: 0 0 4px
+    z-index: 1
+
+    &:hover
+      z-index: 2
+
+    .booking-calendar-class-time
+      text-transform: uppercase
+      font:
+        family: $oswald
+        size: $font-size-h4
+      color: material-color('grey', '800')
+      text-align: right
+
+      span
+        color: material-color('grey', '400')
+
+    .booking-calendar-class-name
+      font:
+        size: $font-size-base
+        weight: 400
+      margin: 0
+      line-height: 1.5
+      clear: both
+
+    .booking-calendar-class-instructor
+      font-weight: 500
+      color: $orange
+      white-space: nowrap
+      text-overflow: ellipsis
+      overflow: hidden
+
+    .booking-calendar-class-duration
+      color: material-color('grey', '500')
+
+    .booking-calendar-class-instructor,
+    .booking-calendar-class-duration
+      text-align: right
+
+    a
+      display: block
+      position: relative
+      padding: ($grid-gutter-width / 2) $padding-small-horizontal
+      background-color: #fdfdfd
+      color: material-color('grey', '700')
+      text-decoration: none
+      text-align: right
+      box-shadow: 0 0 0 0 rgba(black, 0)
+      +transition-property(box-shadow transform border-color)
+      +transition-duration(100ms)
+      -webkit-transform: scale3d(1, 1, 1)
+      -ms-transform: scale3d(1, 1, 1)
+      -o-transform: scale3d(1, 1, 1)
+      transform: scale3d(1, 1, 1)
+
+      &:hover,
+      &:focus,
+      &:active
+        background-color: white
+        box-shadow: 0 7px 15px 1px rgba(black, .15), 0 2px 4px 1px rgba(black, .2)
+        -webkit-transform: scale3d(1.04, 1.04, 1)
+        -ms-transform: scale3d(1.04, 1.04, 1)
+        -o-transform: scale3d(1.04, 1.04, 1)
+        transform: scale3d(1.04, 1.04, 1)
+
+      &:active
+        background-color: material-color('grey', '900')
+        box-shadow: 0 0 0 rgba(black, 0)
+        -webkit-transform: scale3d(1, 1, 1)
+        -ms-transform: scale3d(1, 1, 1)
+        -o-transform: scale3d(1, 1, 1)
+        transform: scale3d(1, 1, 1)
+        +transition-duration(0ms)
+
+        .booking-calendar-class-time
+          color: white
+
+    &.booked
+      .booking-calendar-class-time
+        color: material-color('grey', '400')
+
+      .booking-calendar-class-name
+        color: material-color('grey', '600')
+
+      .booking-calendar-class-instructor
+        color: white
+
+      .booking-calendar-class-duration
+        color: material-color('grey', '500')
+
+      a
+        &,
+        &:hover,
+        &:focus,
+        &:active,
+          background-color: material-color('grey', '900')
+
+
+    &.cancelled,
+    &.locked
+      color: material-color('grey', '400')
+
+      a
+        &,
+        &:hover,
+        &:focus,
+        &:active,
+          background-color: material-color('grey', '200')
+          color: inherit
+          box-shadow: 0 0 0 rgba(black, 0)
+          cursor: default
+          -webkit-transform: scale3d(1, 1, 1)
+          -ms-transform: scale3d(1, 1, 1)
+          -o-transform: scale3d(1, 1, 1)
+          transform: scale3d(1, 1, 1)
+
+        .booking-calendar-class-time,
+        .booking-calendar-class-instructor,
+        .booking-calendar-class-duration
+          color: inherit
+
+  @media only screen and (min-width: $screen-sm-min)
+    .booking-calendar-day
+      float: left
+      width: percentage(1/7)
+      padding: 0 2px

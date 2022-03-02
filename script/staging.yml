@@ -1,0 +1,257 @@
+---
+- hosts: all
+  remote_user: root
+
+  vars:
+    user: "deploy"
+
+  tasks:
+    - name: Allow ssh access
+      tags: firewall
+      ufw: rule=allow port=22 proto=tcp
+
+    - name: Allow https access
+      tags: firewall
+      ufw: rule=allow port=443 proto=tcp
+
+    - name: Allow http access
+      tags: firewall
+      ufw: rule=allow port=80 proto=tcp
+
+    - name: Enable the firewall
+      tags: firewall
+      ufw: state=enabled
+
+    - name: create deploy group
+      group: name="{{user}}"
+
+    - name: Create admins group
+      group: name=admin state=present
+
+    - name: make sure we can sudo as admin group
+      lineinfile: dest=/etc/sudoers state=present regexp="^%admin" line="%admin ALL=(ALL) NOPASSWD:ALL"
+
+    - name: create deploy user
+      user: name="{{user}}" groups="{{user}},admin" shell=/bin/bash
+
+    - name: copy ssh keys
+      tags: auth
+      authorized_key: user="{{user}}" key=https://github.com/{{item}}.keys
+      with_items:
+        - drteeth
+        - minusfive
+        - jamiebikies
+
+- hosts: all
+  remote_user: deploy
+  become: true
+
+  roles:
+    - williamyeh.reset-locale
+    - ANXS.postgresql
+    - rvm_io.rvm1-ruby
+    - DavidWittman.redis
+    - ANXS.nginx
+    - ANXS.monit
+
+  vars:
+    user: "deploy"
+    webmaster: "drteeth@gmail.com"
+    app_name: "spokehaus"
+    app_domain: "spokehaus.ca"
+    fqdn: "{{ansible_fqdn}}"
+    site_path: "/var/www/{{app_domain}}"
+    app_shared_path: "{{site_path}}/shared"
+    public_html_path: "{{app_shared_path}}/public"
+    database_name: "{{app_name}}_{{rails_env}}"
+    database_password: "temp123"
+    nginx_user: www-data
+    nginx_group: www-data
+
+    # postgresql
+    postgresql_version: "9.4"
+    postgresql_databases:
+      - name: "{{database_name}}"
+    postgresql_users:
+      - name: "{{user}}"
+        password: "{{database_password}}"
+    postgresql_user_privileges:
+      - name: "{{user}}"
+        db: "{{database_name}}"
+        priv: "ALL"
+        role_attr_flags: "SUPERUSER"
+
+    # ruby/rvm
+    rvm1_install_path: "/home/{{user}}/.rvm"
+    rvm1_user: "{{user}}"
+    rvm1_install_flags: "--auto-dotfiles --user-install"
+    rvm1_rubies:
+      - "ruby-2.3.0"
+    rvm1_gpg_key_server: "hkp://pgp.mit.edu"
+
+    # nginx
+    nginx_source_version: "1.8.0"
+    openssl_version: "1.0.2f"
+
+  tasks:
+    - apt: update_cache=yes cache_valid_time=3600
+      tags: prereqs
+
+    - name: Install prereqs
+      tags: prereqs
+      apt: name={{item}} state=latest install_recommends=yes
+      with_items:
+        - git
+        - nodejs-legacy
+        - npm
+        - libgmp3-dev
+        - libpq-dev
+        - ntp
+        - python-passlib
+        - bc
+
+    - name: Add github to the list of known hosts
+      known_hosts:  name="github.com"
+                    path="/etc/ssh/ssh_known_hosts"
+                    key="{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}"
+
+    - name: Creates app directories
+      file: path='{{item}}' state='directory' owner='{{user}}' group='{{user}}'
+      with_items:
+        - '{{site_path}}'
+        - '{{app_shared_path}}/config'
+        - '{{app_shared_path}}/log'
+        - '{{app_shared_path}}/tmp/cache'
+        - '{{app_shared_path}}/tmp/sockets'
+        - '{{app_shared_path}}/vendor/bundle'
+        - '{{app_shared_path}}/public/system'
+
+    - name: Set RAILS_ENV
+      tags: env
+      lineinfile: dest="/home/{{user}}/.bashrc"
+                  regexp="^export RAILS_ENV="
+                  line="export RAILS_ENV={{rails_env}}"
+
+    # TODO don't stomp these files if they already exist.
+    # - name: Create database.yml
+    #   template: src="templates/database.yml.j2" dest='{{app_shared_path}}/config/database.yml'
+    #
+    # - name: Create secrets.yml
+    #   template: src="templates/secrets.yml.j2" dest='{{app_shared_path}}/config/secrets.yml'
+
+    - name: Remove Nginx default enabled site
+      file: path=/etc/nginx/sites-enabled/default state=absent
+
+    - name: Add Nginx site
+      tags: nginx_conf
+      template:
+        src: "templates/nginx-site.j2"
+        dest: "/etc/nginx/sites-available/{{app_domain}}"
+        owner: '{{nginx_user}}'
+        group: '{{nginx_group}}'
+
+    - name: Enable Nginx site
+      file:
+        src: /etc/nginx/sites-available/{{app_domain}}
+        path: /etc/nginx/sites-enabled/{{app_domain}}
+        state: link
+        owner: '{{nginx_user}}'
+        group: '{{nginx_group}}'
+
+    - name: upstart script for the app
+      tags: puma
+      template: src="templates/puma-manager.conf.j2" dest=/etc/init/puma-manager.conf
+
+    - name: upstart script for the app
+      tags: puma
+      template: src="templates/puma.conf.j2" dest=/etc/init/puma.conf
+
+    - name: Stop Nginx
+      tags: ssl
+      service: name=nginx enabled=yes state=stopped
+
+    - name: Install letsencrypt client
+      tags: ssl
+      git: repo=https://github.com/letsencrypt/letsencrypt
+           dest=/opt/letsencrypt
+
+    - name: Create letsencrypt config file
+      tags: ssl
+      template: src="templates/ssl.ini.j2" dest='/usr/local/etc/le-renew-webroot.ini'
+
+    - name: Check for SSL cert
+      tags: ssl
+      stat: path=/etc/letsencrypt/renewal/{{fqdn}}.conf
+      register: ssl_cert
+
+    - name: Get initial SSL cert
+      tags: ssl
+      command: "/opt/letsencrypt/letsencrypt-auto certonly --standalone --agree-tos --config /usr/local/etc/le-renew-webroot.ini"
+      when: not ssl_cert.stat.exists
+
+    - name: Start Nginx
+      tags: ssl
+      service: name=nginx enabled=yes state=started
+
+    - name: add basic auth
+      tags: nginx
+      htpasswd: path=/etc/nginx/.htpasswd name=christine password=70danleckie owner=root group=www-data mode=0640
+      when: rails_env == "staging"
+
+    - name: no basic auth on production
+      tags: nginx
+      htpasswd: path=/etc/nginx/.htpasswd name=christine state=absent
+      when: rails_env == "production"
+
+    - name: Enable Nginx service
+      tags:
+        - nginx
+        - nginx_conf
+      service: name=nginx enabled=yes state=restarted
+
+    - name: install global npm packages
+      npm: name={{item}} global=yes
+      with_items:
+        - bower
+
+    - name: install project bower libraries
+      bower:
+        path: "{{site_path}}"
+        state: latest
+      become: no
+
+    - name: periodically sync with the server
+      tags: cron
+      cron:
+        name: "sync with mindbody"
+        user: "{{user}}"
+        minute: "0,10/10"
+        job: "/bin/bash -l -c 'cd {{site_path}}/current && RAILS_ENV={{rails_env}} bundle exec rake mb:sync --trace --silent > log/mb_last_sync.log'"
+
+    - name: periodically refresh the sitemap
+      tags: cron
+      cron:
+        name: "refresh sitemap"
+        user: "{{user}}"
+        minute: "0"
+        hour: "5"
+        job: "/bin/bash -l -c 'cd {{site_path}}/current && RAILS_ENV={{rails_env}} bundle exec rake -s sitemap:refresh'"
+
+    - name: Refresh SSL certs every 60 days
+      tags: cronssl
+      cron:
+        name: "refresh ssl certs"
+        minute: "0"
+        hour: "0"
+        day: "1"
+        month: "*/2"
+        weekday: "*"
+        job: "/home/deploy/renewCerts.sh"
+
+    - name: Install Sidekiq upstart script
+      tags: sidekiq
+      template: src="templates/sidekiq.conf.j2" dest=/etc/init/sidekiq.conf
+
+    - name: Install Sidekiq Workers upstart script
+      tags: sidekiq
+      template: src="templates/sidekiq-workers.conf.j2" dest=/etc/init/workers.conf

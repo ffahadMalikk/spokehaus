@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <soap:Body>
+    <AddOrUpdateClientsResponse xmlns="http://clients.mindbodyonline.com/api/0_5">
+      <AddOrUpdateClientsResult>
+        <Status>Success</Status>
+        <ErrorCode>200</ErrorCode>
+        <XMLDetail>Full</XMLDetail>
+        <ResultCount>0</ResultCount>
+        <CurrentPageIndex>0</CurrentPageIndex>
+        <TotalPageCount>0</TotalPageCount>
+        <Clients>
+          <Client>
+            <Notes/>
+            <MobileProvider xsi:nil="true"/>
+            <AppointmentGenderPreference>None</AppointmentGenderPreference>
+            <IsCompany>false</IsCompany>
+            <LiabilityRelease>false</LiabilityRelease>
+            <PromotionalEmailOptIn>false</PromotionalEmailOptIn>
+            <CreationDate>2016-01-13T14:44:12.72</CreationDate>
+            <Liability>
+              <IsReleased>false</IsReleased>
+              <AgreementDate xsi:nil="true"/>
+              <ReleasedBy xsi:nil="true"/>
+            </Liability>
+            <UniqueID>100000014</UniqueID>
+            <Action>Updated</Action>
+            <ID><%= @id %></ID>
+            <FirstName><%= @first_name %></FirstName>
+            <MiddleName><%= @middle_name %></MiddleName>
+            <LastName><%= @last_name %></LastName>
+            <Email><%= @email %></Email>
+            <EmailOptIn>false</EmailOptIn>
+            <State>ON</State>
+            <Country>CA</Country>
+            <BirthDate><%= @birthdate %></BirthDate>
+            <FirstAppointmentDate xsi:nil="true"/>
+            <IsProspect>false</IsProspect>
+            <ContactMethod>1</ContactMethod>
+          </Client>
+        </Clients>
+      </AddOrUpdateClientsResult>
+    </AddOrUpdateClientsResponse>
+  </soap:Body>
+</soap:Envelope>

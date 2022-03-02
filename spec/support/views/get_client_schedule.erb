@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <soap:Body>
+    <GetClientScheduleResponse xmlns="http://clients.mindbodyonline.com/api/0_5">
+      <GetClientScheduleResult>
+        <Status>Success</Status>
+        <ErrorCode>200</ErrorCode>
+        <XMLDetail>Full</XMLDetail>
+        <ResultCount>4</ResultCount>
+        <CurrentPageIndex>0</CurrentPageIndex>
+        <TotalPageCount>1</TotalPageCount>
+        <Visits>
+          <% @bookings.each do |booking| %>
+          <Visit>
+            <ID>WRONG</ID>
+            <ClassID><%= booking.class_id %></ClassID>
+            <AppointmentID>0</AppointmentID>
+            <StartDateTime>2016-03-01T06:15:00</StartDateTime>
+            <LateCancelled>false</LateCancelled>
+            <EndDateTime>2016-03-01T07:00:00</EndDateTime>
+            <Name>SPOKEHAUS 45</Name>
+            <Staff>
+              <SortOrder>0</SortOrder>
+              <AppointmentTrn>false</AppointmentTrn>
+              <ReservationTrn>false</ReservationTrn>
+              <IndependentContractor>false</IndependentContractor>
+              <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+              <ID>100000007</ID>
+              <Name>COURTNEY GRAFTON</Name>
+              <FirstName>COURTNEY</FirstName>
+              <LastName>GRAFTON</LastName>
+              <isMale>false</isMale>
+            </Staff>
+            <Location>
+              <SiteID>287986</SiteID>
+              <AdditionalImageURLs/>
+              <FacilitySquareFeet xsi:nil="true"/>
+              <TreatmentRooms xsi:nil="true"/>
+              <HasClasses>true</HasClasses>
+              <ID>1</ID>
+              <Name>SPOKEHAUS</Name>
+              <Tax1>0</Tax1>
+              <Tax2>0</Tax2>
+              <Tax3>0</Tax3>
+              <Tax4>0</Tax4>
+              <Tax5>0</Tax5>
+              <Latitude>43.637933</Latitude>
+              <Longitude>-79.397470300000009</Longitude>
+            </Location>
+            <WebSignup>false</WebSignup>
+            <SignedIn>false</SignedIn>
+            <MakeUp>false</MakeUp>
+          </Visit>
+          <% end %>
+       </Visits>
+      </GetClientScheduleResult>
+    </GetClientScheduleResponse>
+  </soap:Body>
+</soap:Envelope>

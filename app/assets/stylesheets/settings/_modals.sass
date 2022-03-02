@@ -1,0 +1,41 @@
+.modal-backdrop.in
+  opacity: .2
+
+.modal
+  @extend .fade
+
+  .modal-content
+    box-shadow: 0 10px 50px 1px rgba(black, .15), 0 7px 15px 1px rgba(black, .15), 0 2px 4px 1px rgba(black, .2)
+
+  .modal-header
+    background-color: material-color('grey', '900')
+    color: white
+    border-radius: $border-radius-base $border-radius-base 0 0
+
+  .modal-title
+    font:
+      family: $oswald
+      size: $font-size-h3
+    text-transform: uppercase
+
+  button.close
+    font:
+      size: $font-size-h3
+      weight: 300
+    line-height: .75
+    text-shadow: none
+    opacity: 1
+    color: material-color('grey')
+
+    &:hover,
+    &:focus
+      color: white
+
+    &:active
+      color: $orange
+
+
+@media only screen and (min-width: $screen-md-min)
+  .modal
+    .modal-title
+      font-size: $font-size-h2

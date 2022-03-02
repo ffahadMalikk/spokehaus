@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <soap:Body>
+    <GetServicesResponse xmlns="http://clients.mindbodyonline.com/api/0_5">
+      <GetServicesResult>
+        <Status>Success</Status>
+        <ErrorCode>200</ErrorCode>
+        <XMLDetail>Full</XMLDetail>
+        <ResultCount>4</ResultCount>
+        <CurrentPageIndex>0</CurrentPageIndex>
+        <TotalPageCount>1</TotalPageCount>
+        <Services>
+          <Service>
+            <Price>28.0000</Price>
+            <OnlinePrice>28.0000</OnlinePrice>
+            <TaxRate>0</TaxRate>
+            <ProductID>10101</ProductID>
+            <ID>10101</ID>
+            <Name>1 RIDE</Name>
+            <Count>1</Count>
+          </Service>
+          <Service>
+            <Price>130.0000</Price>
+            <OnlinePrice>130.0000</OnlinePrice>
+            <TaxRate>0</TaxRate>
+            <ProductID>10102</ProductID>
+            <ID>10102</ID>
+            <Name>5 RIDES</Name>
+            <Count>5</Count>
+          </Service>
+          <Service>
+            <Price>240.0000</Price>
+            <OnlinePrice>240.0000</OnlinePrice>
+            <TaxRate>0</TaxRate>
+            <ProductID>10103</ProductID>
+            <ID>10103</ID>
+            <Name>10 RIDES</Name>
+            <Count>10</Count>
+          </Service>
+          <Service>
+            <Price>440.0000</Price>
+            <OnlinePrice>440.0000</OnlinePrice>
+            <TaxRate>0</TaxRate>
+            <ProductID>10105</ProductID>
+            <ID>10105</ID>
+            <Name>20 RIDES</Name>
+            <Count>20</Count>
+          </Service>
+        </Services>
+      </GetServicesResult>
+    </GetServicesResponse>
+  </soap:Body>
+</soap:Envelope>

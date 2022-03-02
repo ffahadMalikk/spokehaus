@@ -1,0 +1,16 @@
+<section id='packages-success' class='page-section'>
+  <header class='page-section-header'>
+    <h1>
+      <%- if @credits_purchased > 1000 %>
+        <%= t('packages.success.title.unlimited') -%>
+      <%- else %>
+        <%= t('packages.success.title', count: @credits_purchased) -%>
+      <%- end %>
+    </h1>
+  </header>
+
+    <footer class='actions'>
+      <%= link_to t('packages.book_cta'), calendar_path, role: :button, class: 'primary-action' -%>
+      <%= link_to 'Profile', user_profile_path, role: :button %>
+    </footer>
+</section>

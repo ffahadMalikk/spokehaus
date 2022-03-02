@@ -1,0 +1,102 @@
+<!--<footer id='main-footer'>-->
+<!--  <div class='primary-footer'>-->
+<!--    <div class='container'>-->
+<!--      <address>-->
+<!--        <h2>Location</h2>-->
+<!--        <p>70 Dan Leckie Way<br>-->
+<!--        Toronto, ON &nbsp; <span class='no-widow'>M5V 0K1</span><br>-->
+<!--        <a href="https://goo.gl/maps/yEJaL87ts2B2" class='map' target="_blank">Map &amp; Directions</a></p>-->
+<!--      </address>-->
+
+<!--      <article class='contact'>-->
+<!--        <h2>Contact</h2>-->
+<!--        <a href="mailto:cityplace@spokehaus.ca" class='email' target="_blank">cityplace@spokehaus.ca</a><br>-->
+<!--        <a href="https://www.instagram.com/spokehaus/" class='instagram' target="_blank">Instagram</a></p>-->
+<!--      </article>-->
+
+<!--      <form action="//spokehaus.us12.list-manage.com/subscribe/post?u=1c2f6edbe8efbaf1e68ae951b&amp;id=e5ef96d225" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" class='newsletter-form' novalidate>-->
+<!--        <input type="text" name="b_1c2f6edbe8efbaf1e68ae951b_e5ef96d225" tabindex="-1" value="">-->
+
+<!--        <h2>Stay in the Know</h2>-->
+<!--        <div class="input-group">-->
+<!--          <label for="email-field">Email Address</label>-->
+<!--          <input type="email" value="" name="EMAIL" id="email-field" placeholder='Email address'>-->
+<!--          <span class='input-group-btn'><input type="submit" value="Submit" name="subscribe"></span>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class='secondary-footer'>-->
+<!--    <ul class='secondary-footer-nav'>-->
+<!--      <li><%#= active_link_to 'Terms &amp; Conditions'.html_safe, toc_path -%></li>-->
+<!--      <li><%#= active_link_to 'Privacy Policy', privacy_policy_path -%></li>-->
+<!--    </ul>-->
+
+<!--    <small class='colophon'>&copy; <%#= Time.now.year -%></small>-->
+<!--  </div>-->
+<!--</footer>-->
+
+
+<footer class="footer">
+  <div class="col-12 px-0 d-flex flex-wrap footer-inner">
+    <div class="footer-widget col-12 col-lg-5 p-2">
+      <div class="footer-logo-cont pb-3">
+        <a href="/">
+          <%= image_tag 'footer-logo.png', alt: "logo", width: "527", class: "mb-1"%>
+        </a>
+      </div>
+      <p>Are you looking for a kick-ass, low impact, high intensity full-body experience on a bike?
+        <br>
+        <br>
+        Book your classes online and visit us at 70 Dan Leckie Way, Toronto.</p>
+    </div>
+    <div class="footer-widget col-12 col-lg-2 p-2">
+      <div class="widget-title-cont pb-1">
+        <h4 class="widget-title mb-3">QUICK LINKS</h4>
+      </div>
+      <div class="widget-content">
+        <ul class="list-items pl-0">
+          <li class="list-item">
+            <span class="list-text"><%= link_to 'About Us', aboutus_path, class: "list-text"%></span>
+          </li>
+          <li class="list-item">
+            <span class="list-text"><%= link_to 'FAQ', faq_path, class: "list-text"%></span>
+          </li>
+          <li class="list-item">
+            <span class="list-text"><%= link_to 'Instructors', instructor_path, class: "list-text"%></span>
+          </li>
+          <li class="list-item">
+            <%= link_to 'Sign-In', user_session_path, class: "list-text"%> / <%= link_to 'Register', new_user_registration_path, class: "list-text"%>
+          </li>
+          <li class="list-item">
+            <span class="list-text"><%= link_to 'Buy Credits', calendar_path, class: "list-text"%></span>
+          </li>
+          <li class="list-item">
+            <span class="list-text"><%= link_to 'Book A Class', calendar_path, class: "list-text"%></span>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-widget col-12 col-lg-5 p-2">
+      <div class="widget-title-cont pb-1">
+        <h4 class="widget-title sign-up-title mb-3">Never miss a beat.<br>
+          Sign-up below for the latest updates.</h4>
+      </div>
+      <div class="widget-content pr-lg-5">
+        <div class="pr-lg-5">
+          <form action="//spokehaus.us12.list-manage.com/subscribe/post?u=1c2f6edbe8efbaf1e68ae951b&amp;id=e5ef96d225" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" class="subscribe-form" novalidate>
+            <input type="text" class="display-none" name="b_1c2f6edbe8efbaf1e68ae951b_e5ef96d225" tabindex="-1" value="">
+            <div class="form-group mb-2">
+              <input type="email" class="form-control pl-2" name="EMAIL" placeholder="Your Email*" value="" required>
+            </div>
+            <button type="submit" class="btn btn-submit" value="Submit" name="subscribe">
+              <span class="button-text">Subscribe</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

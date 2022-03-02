@@ -1,0 +1,67 @@
+---
+- hosts: all
+  sudo: true
+
+  roles:
+    - williamyeh.reset-locale
+    - ANXS.postgresql
+    - rvm_io.rvm1-ruby
+    - DavidWittman.redis
+
+  vars:
+    user: 'vagrant'
+    db_dev: 'spokehaus_development'
+    db_test: 'spokehaus_test'
+
+    postgresql_version: 9.4
+    postgresql_databases:
+      - name: '{{db_dev}}'
+      - name: '{{db_test}}'
+    postgresql_users:
+      - name: '{{user}}'
+    postgresql_user_privileges:
+      - name: '{{user}}'
+        db: '{{db_dev}}'
+        priv: "ALL"
+        role_attr_flags: "SUPERUSER"
+      - name: '{{user}}'
+        db: '{{db_test}}'
+        priv: "ALL"
+        role_attr_flags: "SUPERUSER"
+
+    rvm1_install_path: '/home/{{user}}/.rvm'
+    rvm1_user: '{{user}}'
+    rvm1_install_flags: '--auto-dotfiles --user-install'
+    rvm1_rubies:
+      - 'ruby-2.3.0'
+    rvm1_gpg_key_server: 'hkp://pgp.mit.edu'
+
+  tasks:
+    - apt: update_cache=yes cache_valid_time=3600
+    - apt: name={{item}} state=latest
+      with_items:
+        - git
+        - nodejs-legacy
+        - npm
+        - libgmp3-dev
+        - libpq-dev
+
+    - known_hosts:  name='github.com'
+                    path='/etc/ssh/ssh_known_hosts'
+                    key="{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}"
+
+    - name: install global npm packages
+      npm: name={{item}} global=yes
+      with_items:
+        - bower
+
+    - name: install project bower libraries
+      bower: path=/vagrant state=latest
+      sudo: no
+
+    - name: periodically sync with the server
+      cron:
+        name: "sync with mindbody"
+        user: "{{user}}"
+        minute: 15
+        job: "/vagrant/script/mindbody_sync"

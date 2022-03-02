@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <soap:Body>
+    <GetClassesResponse xmlns="http://clients.mindbodyonline.com/api/0_5">
+      <GetClassesResult>
+        <Status>Success</Status>
+        <ErrorCode>200</ErrorCode>
+        <XMLDetail>Full</XMLDetail>
+        <ResultCount>5</ResultCount>
+        <CurrentPageIndex>0</CurrentPageIndex>
+        <TotalPageCount>1</TotalPageCount>
+        <Classes>
+          <Class>
+            <ClassScheduleID>36</ClassScheduleID>
+            <Location>
+              <SiteID>287986</SiteID>
+              <AdditionalImageURLs/>
+              <FacilitySquareFeet xsi:nil="true"/>
+              <TreatmentRooms xsi:nil="true"/>
+              <HasClasses>true</HasClasses>
+              <ID>1</ID>
+              <Name>SPOKEHAUS</Name>
+              <Address>70 Dan Leckie Way</Address>
+              <Address2>Toronto ON M5V 0K1</Address2>
+              <Tax1>0</Tax1>
+              <Tax2>0</Tax2>
+              <Tax3>0</Tax3>
+              <Tax4>0</Tax4>
+              <Tax5>0</Tax5>
+              <Phone>4165058626</Phone>
+              <City>Toronto</City>
+              <StateProvCode>ON</StateProvCode>
+              <PostalCode>M5V 0K1</PostalCode>
+              <Latitude>43.637933</Latitude>
+              <Longitude>-79.397470300000009</Longitude>
+            </Location>
+            <MaxCapacity>35</MaxCapacity>
+            <WebCapacity>35</WebCapacity>
+            <TotalBooked>1</TotalBooked>
+            <TotalBookedWaitlist>0</TotalBookedWaitlist>
+            <WebBooked>0</WebBooked>
+            <SemesterID xsi:nil="true"/>
+            <IsCanceled>false</IsCanceled>
+            <Substitute>false</Substitute>
+            <Active>true</Active>
+            <IsWaitlistAvailable>false</IsWaitlistAvailable>
+            <IsEnrolled>false</IsEnrolled>
+            <HideCancel>false</HideCancel>
+            <ID>1831</ID>
+            <IsAvailable>true</IsAvailable>
+            <StartDateTime>2016-01-16T08:00:00</StartDateTime>
+            <EndDateTime>2016-01-16T08:45:00</EndDateTime>
+            <ClassDescription>
+              <ID>2</ID>
+              <Name>SPOKEHAUS 45</Name>
+              <Description/>
+              <Prereq/>
+              <Notes/>
+              <LastUpdated>2016-01-08T10:05:25.487</LastUpdated>
+              <Program>
+                <ID>22</ID>
+                <Name>Classes</Name>
+                <ScheduleType>DropIn</ScheduleType>
+                <CancelOffset>0</CancelOffset>
+              </Program>
+              <SessionType>
+                <DefaultTimeLength xsi:nil="true"/>
+                <ProgramID>22</ProgramID>
+                <NumDeducted>1</NumDeducted>
+                <ID>5</ID>
+                <Name>Regular Spinning</Name>
+              </SessionType>
+            </ClassDescription>
+            <Staff>
+              <Email>christine@spokehaus.ca</Email>
+              <MobilePhone>4165058626</MobilePhone>
+              <State>ON</State>
+              <Country>CA</Country>
+              <SortOrder>0</SortOrder>
+              <AppointmentTrn>true</AppointmentTrn>
+              <ReservationTrn>true</ReservationTrn>
+              <IndependentContractor>false</IndependentContractor>
+              <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+              <ID>3</ID>
+              <Name>CHRISTINE TESSARO</Name>
+              <FirstName>CHRISTINE</FirstName>
+              <LastName>TESSARO</LastName>
+              <ImageURL>https://clients.mindbodyonline.com/studios/SPOKEHAUS/staff/3_large.jpg?imageversion=1452944231</ImageURL>
+              <Bio/>
+              <isMale>false</isMale>
+            </Staff>
+          </Class>
+          <Class>
+            <ClassScheduleID>37</ClassScheduleID>
+            <Location>
+              <SiteID>287986</SiteID>
+              <AdditionalImageURLs/>
+              <FacilitySquareFeet xsi:nil="true"/>
+              <TreatmentRooms xsi:nil="true"/>
+              <HasClasses>true</HasClasses>
+              <ID>1</ID>
+              <Name>SPOKEHAUS</Name>
+              <Address>70 Dan Leckie Way</Address>
+              <Address2>Toronto ON M5V 0K1</Address2>
+              <Tax1>0</Tax1>
+              <Tax2>0</Tax2>
+              <Tax3>0</Tax3>
+              <Tax4>0</Tax4>
+              <Tax5>0</Tax5>
+              <Phone>4165058626</Phone>
+              <City>Toronto</City>
+              <StateProvCode>ON</StateProvCode>
+              <PostalCode>M5V 0K1</PostalCode>
+              <Latitude>43.637933</Latitude>
+              <Longitude>-79.397470300000009</Longitude>
+            </Location>
+            <MaxCapacity>35</MaxCapacity>
+            <WebCapacity>35</WebCapacity>
+            <TotalBooked>0</TotalBooked>
+            <TotalBookedWaitlist>0</TotalBookedWaitlist>
+            <WebBooked>0</WebBooked>
+            <SemesterID xsi:nil="true"/>
+            <IsCanceled>false</IsCanceled>
+            <Substitute>false</Substitute>
+            <Active>true</Active>
+            <IsWaitlistAvailable>false</IsWaitlistAvailable>
+            <IsEnrolled>false</IsEnrolled>
+            <HideCancel>false</HideCancel>
+            <ID>1884</ID>
+            <IsAvailable>true</IsAvailable>
+            <StartDateTime>2016-01-16T09:00:00</StartDateTime>
+            <EndDateTime>2016-01-16T09:45:00</EndDateTime>
+            <ClassDescription>
+              <ID>2</ID>
+              <Name>SPOKEHAUS 45</Name>
+              <Description/>
+              <Prereq/>
+              <Notes/>
+              <LastUpdated>2016-01-08T10:05:25.487</LastUpdated>
+              <Program>
+                <ID>22</ID>
+                <Name>Classes</Name>
+                <ScheduleType>DropIn</ScheduleType>
+                <CancelOffset>0</CancelOffset>
+              </Program>
+              <SessionType>
+                <DefaultTimeLength xsi:nil="true"/>
+                <ProgramID>22</ProgramID>
+                <NumDeducted>1</NumDeducted>
+                <ID>5</ID>
+                <Name>Regular Spinning</Name>
+              </SessionType>
+            </ClassDescription>
+            <Staff>
+              <State>ON</State>
+              <SortOrder>0</SortOrder>
+              <AppointmentTrn>true</AppointmentTrn>
+              <ReservationTrn>true</ReservationTrn>
+              <IndependentContractor>false</IndependentContractor>
+              <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+              <ID>100000007</ID>
+              <Name>COURTNEY GRAFTON</Name>
+              <FirstName>COURTNEY</FirstName>
+              <LastName>GRAFTON</LastName>
+              <isMale>false</isMale>
+            </Staff>
+          </Class>
+          <Class>
+            <ClassScheduleID>38</ClassScheduleID>
+            <Location>
+              <SiteID>287986</SiteID>
+              <AdditionalImageURLs/>
+              <FacilitySquareFeet xsi:nil="true"/>
+              <TreatmentRooms xsi:nil="true"/>
+              <HasClasses>true</HasClasses>
+              <ID>1</ID>
+              <Name>SPOKEHAUS</Name>
+              <Address>70 Dan Leckie Way</Address>
+              <Address2>Toronto ON M5V 0K1</Address2>
+              <Tax1>0</Tax1>
+              <Tax2>0</Tax2>
+              <Tax3>0</Tax3>
+              <Tax4>0</Tax4>
+              <Tax5>0</Tax5>
+              <Phone>4165058626</Phone>
+              <City>Toronto</City>
+              <StateProvCode>ON</StateProvCode>
+              <PostalCode>M5V 0K1</PostalCode>
+              <Latitude>43.637933</Latitude>
+              <Longitude>-79.397470300000009</Longitude>
+            </Location>
+            <MaxCapacity>35</MaxCapacity>
+            <WebCapacity>35</WebCapacity>
+            <TotalBooked>0</TotalBooked>
+            <TotalBookedWaitlist>0</TotalBookedWaitlist>
+            <WebBooked>0</WebBooked>
+            <SemesterID xsi:nil="true"/>
+            <IsCanceled>false</IsCanceled>
+            <Substitute>false</Substitute>
+            <Active>true</Active>
+            <IsWaitlistAvailable>false</IsWaitlistAvailable>
+            <IsEnrolled>false</IsEnrolled>
+            <HideCancel>false</HideCancel>
+            <ID>1937</ID>
+            <IsAvailable>true</IsAvailable>
+            <StartDateTime>2016-01-16T10:00:00</StartDateTime>
+            <EndDateTime>2016-01-16T10:45:00</EndDateTime>
+            <ClassDescription>
+              <ID>2</ID>
+              <Name>SPOKEHAUS 45</Name>
+              <Description/>
+              <Prereq/>
+              <Notes/>
+              <LastUpdated>2016-01-08T10:05:25.487</LastUpdated>
+              <Program>
+                <ID>22</ID>
+                <Name>Classes</Name>
+                <ScheduleType>DropIn</ScheduleType>
+                <CancelOffset>0</CancelOffset>
+              </Program>
+              <SessionType>
+                <DefaultTimeLength xsi:nil="true"/>
+                <ProgramID>22</ProgramID>
+                <NumDeducted>1</NumDeducted>
+                <ID>5</ID>
+                <Name>Regular Spinning</Name>
+              </SessionType>
+            </ClassDescription>
+            <Staff>
+              <State>ON</State>
+              <SortOrder>0</SortOrder>
+              <AppointmentTrn>true</AppointmentTrn>
+              <ReservationTrn>true</ReservationTrn>
+              <IndependentContractor>false</IndependentContractor>
+              <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+              <ID>100000003</ID>
+              <Name>CATHERINE MORTIMER</Name>
+              <FirstName>CATHERINE</FirstName>
+              <LastName>MORTIMER</LastName>
+              <isMale>false</isMale>
+            </Staff>
+          </Class>
+          <Class>
+            <ClassScheduleID>39</ClassScheduleID>
+            <Location>
+              <SiteID>287986</SiteID>
+              <AdditionalImageURLs/>
+              <FacilitySquareFeet xsi:nil="true"/>
+              <TreatmentRooms xsi:nil="true"/>
+              <HasClasses>true</HasClasses>
+              <ID>1</ID>
+              <Name>SPOKEHAUS</Name>
+              <Address>70 Dan Leckie Way</Address>
+              <Address2>Toronto ON M5V 0K1</Address2>
+              <Tax1>0</Tax1>
+              <Tax2>0</Tax2>
+              <Tax3>0</Tax3>
+              <Tax4>0</Tax4>
+              <Tax5>0</Tax5>
+              <Phone>4165058626</Phone>
+              <City>Toronto</City>
+              <StateProvCode>ON</StateProvCode>
+              <PostalCode>M5V 0K1</PostalCode>
+              <Latitude>43.637933</Latitude>
+              <Longitude>-79.397470300000009</Longitude>
+            </Location>
+            <MaxCapacity>35</MaxCapacity>
+            <WebCapacity>35</WebCapacity>
+            <TotalBooked>0</TotalBooked>
+            <TotalBookedWaitlist>0</TotalBookedWaitlist>
+            <WebBooked>0</WebBooked>
+            <SemesterID xsi:nil="true"/>
+            <IsCanceled>false</IsCanceled>
+            <Substitute>false</Substitute>
+            <Active>true</Active>
+            <IsWaitlistAvailable>false</IsWaitlistAvailable>
+            <IsEnrolled>false</IsEnrolled>
+            <HideCancel>false</HideCancel>
+            <ID>1990</ID>
+            <IsAvailable>true</IsAvailable>
+            <StartDateTime>2016-01-16T11:00:00</StartDateTime>
+            <EndDateTime>2016-01-16T11:45:00</EndDateTime>
+            <ClassDescription>
+              <ID>2</ID>
+              <Name>SPOKEHAUS 45</Name>
+              <Description/>
+              <Prereq/>
+              <Notes/>
+              <LastUpdated>2016-01-08T10:05:25.487</LastUpdated>
+              <Program>
+                <ID>22</ID>
+                <Name>Classes</Name>
+                <ScheduleType>DropIn</ScheduleType>
+                <CancelOffset>0</CancelOffset>
+              </Program>
+              <SessionType>
+                <DefaultTimeLength xsi:nil="true"/>
+                <ProgramID>22</ProgramID>
+                <NumDeducted>1</NumDeducted>
+                <ID>5</ID>
+                <Name>Regular Spinning</Name>
+              </SessionType>
+            </ClassDescription>
+            <Staff>
+              <State>ON</State>
+              <SortOrder>0</SortOrder>
+              <AppointmentTrn>true</AppointmentTrn>
+              <ReservationTrn>true</ReservationTrn>
+              <IndependentContractor>false</IndependentContractor>
+              <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+              <ID>100000005</ID>
+              <Name>MELISSA CAPAN</Name>
+              <FirstName>MELISSA</FirstName>
+              <LastName>CAPAN</LastName>
+              <isMale>false</isMale>
+            </Staff>
+          </Class>
+          <Class>
+            <ClassScheduleID>40</ClassScheduleID>
+            <Location>
+              <SiteID>287986</SiteID>
+              <AdditionalImageURLs/>
+              <FacilitySquareFeet xsi:nil="true"/>
+              <TreatmentRooms xsi:nil="true"/>
+              <HasClasses>true</HasClasses>
+              <ID>1</ID>
+              <Name>SPOKEHAUS</Name>
+              <Address>70 Dan Leckie Way</Address>
+              <Address2>Toronto ON M5V 0K1</Address2>
+              <Tax1>0</Tax1>
+              <Tax2>0</Tax2>
+              <Tax3>0</Tax3>
+              <Tax4>0</Tax4>
+              <Tax5>0</Tax5>
+              <Phone>4165058626</Phone>
+              <City>Toronto</City>
+              <StateProvCode>ON</StateProvCode>
+              <PostalCode>M5V 0K1</PostalCode>
+              <Latitude>43.637933</Latitude>
+              <Longitude>-79.397470300000009</Longitude>
+            </Location>
+            <MaxCapacity>35</MaxCapacity>
+            <WebCapacity>35</WebCapacity>
+            <TotalBooked>0</TotalBooked>
+            <TotalBookedWaitlist>0</TotalBookedWaitlist>
+            <WebBooked>0</WebBooked>
+            <SemesterID xsi:nil="true"/>
+            <IsCanceled>false</IsCanceled>
+            <Substitute>false</Substitute>
+            <Active>true</Active>
+            <IsWaitlistAvailable>false</IsWaitlistAvailable>
+            <IsEnrolled>false</IsEnrolled>
+            <HideCancel>false</HideCancel>
+            <ID>2043</ID>
+            <IsAvailable>true</IsAvailable>
+            <StartDateTime>2016-01-16T12:00:00</StartDateTime>
+            <EndDateTime>2016-01-16T12:45:00</EndDateTime>
+            <ClassDescription>
+              <ID>2</ID>
+              <Name>SPOKEHAUS 45</Name>
+              <Description/>
+              <Prereq/>
+              <Notes/>
+              <LastUpdated>2016-01-08T10:05:25.487</LastUpdated>
+              <Program>
+                <ID>22</ID>
+                <Name>Classes</Name>
+                <ScheduleType>DropIn</ScheduleType>
+                <CancelOffset>0</CancelOffset>
+              </Program>
+              <SessionType>
+                <DefaultTimeLength xsi:nil="true"/>
+                <ProgramID>22</ProgramID>
+                <NumDeducted>1</NumDeducted>
+                <ID>5</ID>
+                <Name>Regular Spinning</Name>
+              </SessionType>
+            </ClassDescription>
+            <Staff>
+              <State>ON</State>
+              <SortOrder>0</SortOrder>
+              <AppointmentTrn>true</AppointmentTrn>
+              <ReservationTrn>true</ReservationTrn>
+              <IndependentContractor>false</IndependentContractor>
+              <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+              <ID>100000005</ID>
+              <Name>MELISSA CAPAN</Name>
+              <FirstName>MELISSA</FirstName>
+              <LastName>CAPAN</LastName>
+              <isMale>false</isMale>
+            </Staff>
+          </Class>
+        </Classes>
+      </GetClassesResult>
+    </GetClassesResponse>
+  </soap:Body>
+</soap:Envelope>

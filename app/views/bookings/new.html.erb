@@ -1,0 +1,1 @@
+<%= render 'form', url: @booking.persisted? ? booking_path(@booking) : scheduled_class_bookings_path(@booking.scheduled_class), method: @booking.persisted? ? :put : :post %>

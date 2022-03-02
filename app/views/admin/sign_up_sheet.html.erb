@@ -1,0 +1,34 @@
+<section id='admin-sign-up-sheet' class='page-section'>
+  <header class='page-section-header'>
+    <h1><%= @sign_ups.class_time %></h1>
+    <h2><%= @sign_ups.class_name -%> &ndash; <%= @sign_ups.class_instructor -%></h2>
+  </header>
+
+  <div class='container'>
+    <%- if @sign_ups.any? -%>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Bike #</th>
+            <th>Shoe size</th>
+            <th>CC on file?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sign_ups.each do |sign_up| %>
+            <tr role="sign-up">
+              <td><%= sign_up.user.name %></td>
+              <td><%= sign_up.bike_position %></td>
+              <td><%= sign_up.user.shoe_size %></td>
+              <td><%= sign_up.user.has_stored_card? ? 'yes' : 'no' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    <%- else -%>
+      <p class='no-sign-ups'><%= t('sign_ups_sheet.no_sign_ups') -%></p>
+    <%- end -%>
+  </div>
+</section>

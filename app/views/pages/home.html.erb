@@ -1,0 +1,36 @@
+<section id='home'>
+  <div id='home-carousel' class='carousel slide'>
+    <ol class="carousel-indicators">
+      <li data-target="#home-carousel" data-slide-to="0" class="active"></li>
+      <li data-target="#home-carousel" data-slide-to="1"></li>
+      <li data-target="#home-carousel" data-slide-to="2"></li>
+      <li data-target="#home-carousel" data-slide-to="3"></li>
+      <li data-target="#home-carousel" data-slide-to="4"></li>
+      <li data-target="#home-carousel" data-slide-to="5"></li>
+    </ol>
+
+
+    <ul class='carousel-inner' role='listbox'>
+      <li class='item item-dark-theme active' style='background-image: url(<%= asset_path('home/img_0.jpg') -%>)'></li>
+      <li class='item item-dark-theme' style='background-image: url(<%= asset_path('home/img_1.jpg') -%>)'></li>
+      <li class='item item-dark-theme' style='background-image: url(<%= asset_path('home/img_2.jpg') -%>)'></li>
+      <li class='item item-dark-theme' style='background-image: url(<%= asset_path('home/1042.jpg') -%>)'></li>
+      <li class='item item-dark-theme' style='background-image: url(<%= asset_path('home/0890.jpg') -%>)'></li>
+      <li class='item item-dark-theme' style='background-image: url(<%= asset_path('home/0883.jpg') -%>)'></li>
+      <!-- <li class='item item-dark-theme' style='background-image: url(<%= asset_path('home/1350.jpg') -%>)'></li> -->
+      <!-- <li class='item item-dark-theme' style='background-image: url(<%= asset_path('home/1212.jpg') -%>)'></li> -->
+      <!-- <li class='item item-dark-theme' style='background-image: url(<%= asset_path('home/1674.jpg') -%>)'></li> -->
+    </ul>
+
+    <div class='carousel-caption carousel-caption-dark-theme'>
+      <header>
+        <div class='cta'>
+          <%= link_to 'Book a Class', calendar_path, role: :button, class: 'button-book'%>
+          <%- if Flags.comp_first_ride? -%>
+            <small>1<sup>st</sup> class free - limited time</small>
+          <%- end -%>
+        </div>
+      </header>
+    </div>
+  </div>
+</section>

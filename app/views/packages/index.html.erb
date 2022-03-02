@@ -1,0 +1,158 @@
+<section id='packages' class='page-section'>
+  <header class='page-section-header'>
+    <h1><%= t('packages.title') %></h1>
+  </header>
+
+  <p class='lead'><%= t('packages.lead1') %></p>
+  <%= form_for @purchase, url: buy_packages_path, as: :purchase do |f| %>
+
+    <ul class='packages-list'>
+      <%- if Flags.comp_first_ride? -%>
+        <li class='package'>
+          <%= link_to calendar_path do %>
+            <h2><strong>1<sup>st</sup></strong> ride</h2>
+            <p class='package-price package-price-with-disclaimer'>Free <small>limited time offer</small></p>
+            <p class='package-cta'><%= t('packages.book_cta') -%></p>
+          <%- end -%>
+        </li>
+      <%- end -%>
+
+      <%- @packages.each do |package| -%>
+        <li class='package'>
+          <%= f.radio_button :package_id, package.id, checked: (@purchase.package_id === package.id) %>
+          <%= f.label :package_id, value: package.id do %>
+            <h2>
+              <%- if package.is_intro_offer? -%>
+                <span class='ribbon'><%= t('packages.intro_offer') -%></span>
+              <%- end -%>
+              <strong class="<%= package.is_unlimited? ? 'packages-unlimited' : '' %>">
+                <%- if package.is_unlimited? %>
+                  <%= t('packages.unlimited') %>
+                <%- else %>
+                  <%= package.count -%>
+                <%- end %>
+              </strong>
+              <%- if package.is_unlimited? %>
+                <%= package.expiry_text %>
+              <%- elsif package.name =~ /RIDE/ %>
+                <%= 'ride'.pluralize(package.count) %>
+              <%- else %>
+                <%= package.name %>
+              <%- end %>
+            </h2>
+
+            <p class='package-price' data-subtotal="<%= package.sub_total %>"><span>$</span><%= price(package) -%></p>
+            <p class='package-expiry'>
+              <%- if package.is_unlimited? %>
+                &nbsp;
+              <%- else %>
+                Expires in <span><%= package.expiry_text -%><span>
+              <%- end %>
+            </p>
+            <p class='package-cta'><%= t("packages.buy_cta.#{user_locale_key}") -%></p>
+          <%- end -%>
+        </li>
+
+      <%- end -%>
+    </ul>
+
+    <p class='lead'><%= t('packages.whats_included') %></p>
+
+    <p class='lead tax-disclaimer'><%= t('packages.tax_disclaimer') %></p>
+
+
+    <div id='packages-payment-modal' class='modal' tabindex='-1' role='dialog' data-is-authenticated='<%= current_user.present? %>'>
+      <div class='modal-dialog'>
+        <article class='modal-content'>
+          <header class='modal-header'>
+            <button type="button" class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            <h1 class='modal-title'>Credit Card</h1>
+          </header>
+
+          <div class='modal-body'>
+            <%= render partial: 'components/form_errors', locals: {model: @purchase} %>
+
+            <% stored_card = current_or_guest_user.stored_card %>
+            <% if stored_card.present? %>
+              <ul class='packages-payment'>
+                <li class='field-radio'>
+                  <%= f.radio_button :payment_type, 'stored_card' %>
+                  <%= f.label :payment_type, t('label.use_my_card'), value: 'stored_card' %>
+                  <%= stored_card.number %> <%= stored_card.expiry %>
+                </li>
+                <li class='field-radio'>
+                  <%= f.radio_button :payment_type, 'new_card' %>
+                  <%= f.label :payment_type, t('label.provide_credit_card_info'), value: 'new_card' %>
+                </li>
+              </ul>
+            <%- else -%>
+              <%= f.hidden_field :payment_type, value: 'new_card' %>
+            <% end %>
+
+            <div class="new-card">
+              <p class='info'>Please enter your credit card information. <strong>All fields are required.</strong></p>
+
+              <div class='field'>
+                <%= f.label :name_on_card %>
+                <%= f.text_field :name_on_card %>
+              </div>
+
+              <div class='field'>
+                <%= f.label :card_number %>
+                <%= f.text_field :card_number %>
+              </div>
+
+              <div class='field field-expiry'>
+                <%= f.label :expiry_year, 'Expiration' %>
+                <%= f.select :expiry_year do %>
+                  <%- current_year = Time.now.year.to_i -%>
+                  <%= options_for_select (current_year..(current_year + 50)).to_a, current_year %>
+                <%- end -%>
+                <%= f.select :expiry_month do %>
+                  <%= options_for_select (1..12).to_a, Time.now.month.to_i %>
+                <%- end -%>
+              </div>
+
+              <div class='field'>
+                <%= f.label :address, 'Billing Address' %>
+                <%= f.text_field :address %>
+              </div>
+
+              <div class='field'>
+                <%= f.label :city %>
+                <%= f.text_field :city %>
+              </div>
+
+              <div class='field'>
+                <%= f.label :province %>
+                <%= f.text_field :province %>
+              </div>
+
+              <div class='field'>
+                <%= f.label :postal_code %>
+                <%= f.text_field :postal_code %>
+              </div>
+
+              <div class='field-checkbox'>
+                <%= f.check_box :save_card %>
+                <%= f.label :save_card %>
+              </div>
+            </div>
+
+            <div class="breakdown-container">
+              <table id="price-breakdown">
+                <tr><td class="label">Subtotal</td><td class="amt subtotal"></td></tr>
+                <tr><td class="label">HST (13%)</td><td class="amt tax"></td></tr>
+                <tr class="total-row"><td class="label">Total</td><td class="amt total"></td></tr>
+              </table>
+            </div>
+
+            <div class='actions'>
+              <%= f.submit 'Purchase Credits', class: 'primary-action', data: { disable_with: t('label.please_wait') } %>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  <% end %>
+</section>

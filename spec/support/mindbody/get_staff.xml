@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <soap:Body>
+    <GetStaffResponse xmlns="http://clients.mindbodyonline.com/api/0_5">
+      <GetStaffResult>
+        <Status>Success</Status>
+        <ErrorCode>200</ErrorCode>
+        <XMLDetail>Full</XMLDetail>
+        <ResultCount>11</ResultCount>
+        <CurrentPageIndex>0</CurrentPageIndex>
+        <TotalPageCount>1</TotalPageCount>
+        <StaffMembers>
+          <Staff>
+            <SortOrder>0</SortOrder>
+            <AppointmentTrn>false</AppointmentTrn>
+            <ReservationTrn>false</ReservationTrn>
+            <IndependentContractor>false</IndependentContractor>
+            <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+            <ID>-5</ID>
+            <Name>Autoemail Autoemail</Name>
+            <FirstName>Autoemail</FirstName>
+            <LastName>Autoemail</LastName>
+            <isMale>false</isMale>
+          </Staff>
+          <Staff>
+            <SortOrder>0</SortOrder>
+            <AppointmentTrn>false</AppointmentTrn>
+            <ReservationTrn>false</ReservationTrn>
+            <IndependentContractor>false</IndependentContractor>
+            <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+            <ID>-4</ID>
+            <Name>Client Client</Name>
+            <FirstName>Client</FirstName>
+            <LastName>Client</LastName>
+            <isMale>false</isMale>
+          </Staff>
+          <Staff>
+            <SortOrder>0</SortOrder>
+            <AppointmentTrn>false</AppointmentTrn>
+            <ReservationTrn>false</ReservationTrn>
+            <IndependentContractor>false</IndependentContractor>
+            <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+            <ID>-1</ID>
+            <Name>Class Cancelled</Name>
+            <FirstName>Class</FirstName>
+            <LastName>Cancelled</LastName>
+            <isMale>false</isMale>
+          </Staff>
+          <Staff>
+            <Address>DO NOT DELETE!</Address>
+            <State>CA</State>
+            <Country>UNITED STATES</Country>
+            <SortOrder>0</SortOrder>
+            <AppointmentTrn>false</AppointmentTrn>
+            <ReservationTrn>false</ReservationTrn>
+            <IndependentContractor>false</IndependentContractor>
+            <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+            <ID>1</ID>
+            <Name>STAFF STAFF</Name>
+            <FirstName>STAFF</FirstName>
+            <LastName>STAFF</LastName>
+            <isMale>false</isMale>
+          </Staff>
+          <Staff>
+            <Email>christine@spokehaus.ca</Email>
+            <MobilePhone>4165058626</MobilePhone>
+            <State>ON</State>
+            <Country>CA</Country>
+            <SortOrder>0</SortOrder>
+            <AppointmentTrn>true</AppointmentTrn>
+            <ReservationTrn>true</ReservationTrn>
+            <IndependentContractor>false</IndependentContractor>
+            <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+            <ID>3</ID>
+            <Name>CHRISTINE TESSARO</Name>
+            <FirstName>CHRISTINE</FirstName>
+            <LastName>TESSARO</LastName>
+            <ImageURL>https://clients.mindbodyonline.com/studios/SPOKEHAUS/staff/3_large.jpg?imageversion=1452944336</ImageURL>
+            <Bio/>
+            <isMale>false</isMale>
+          </Staff>
+          <Staff>
+            <State>ON</State>
+            <SortOrder>0</SortOrder>
+            <AppointmentTrn>true</AppointmentTrn>
+            <ReservationTrn>true</ReservationTrn>
+            <IndependentContractor>false</IndependentContractor>
+            <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+            <ID>100000002</ID>
+            <Name>TANIA OSZURKO</Name>
+            <FirstName>TANIA</FirstName>
+            <LastName>OSZURKO</LastName>
+            <isMale>false</isMale>
+          </Staff>
+          <Staff>
+            <State>ON</State>
+            <SortOrder>0</SortOrder>
+            <AppointmentTrn>true</AppointmentTrn>
+            <ReservationTrn>true</ReservationTrn>
+            <IndependentContractor>false</IndependentContractor>
+            <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+            <ID>100000003</ID>
+            <Name>CATHERINE MORTIMER</Name>
+            <FirstName>CATHERINE</FirstName>
+            <LastName>MORTIMER</LastName>
+            <isMale>false</isMale>
+          </Staff>
+          <Staff>
+            <State>ON</State>
+            <SortOrder>0</SortOrder>
+            <AppointmentTrn>true</AppointmentTrn>
+            <ReservationTrn>true</ReservationTrn>
+            <IndependentContractor>false</IndependentContractor>
+            <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+            <ID>100000004</ID>
+            <Name>MIKE BODSWORTH</Name>
+            <FirstName>MIKE</FirstName>
+            <LastName>BODSWORTH</LastName>
+            <isMale>false</isMale>
+          </Staff>
+          <Staff>
+            <State>ON</State>
+            <SortOrder>0</SortOrder>
+            <AppointmentTrn>true</AppointmentTrn>
+            <ReservationTrn>true</ReservationTrn>
+            <IndependentContractor>false</IndependentContractor>
+            <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+            <ID>100000005</ID>
+            <Name>MELISSA CAPAN</Name>
+            <FirstName>MELISSA</FirstName>
+            <LastName>CAPAN</LastName>
+            <isMale>false</isMale>
+          </Staff>
+          <Staff>
+            <State>ON</State>
+            <SortOrder>0</SortOrder>
+            <AppointmentTrn>true</AppointmentTrn>
+            <ReservationTrn>true</ReservationTrn>
+            <IndependentContractor>false</IndependentContractor>
+            <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+            <ID>100000006</ID>
+            <Name>ERIN  RICHARDS</Name>
+            <FirstName>ERIN </FirstName>
+            <LastName>RICHARDS</LastName>
+            <isMale>false</isMale>
+          </Staff>
+          <Staff>
+            <State>ON</State>
+            <SortOrder>0</SortOrder>
+            <AppointmentTrn>true</AppointmentTrn>
+            <ReservationTrn>true</ReservationTrn>
+            <IndependentContractor>false</IndependentContractor>
+            <AlwaysAllowDoubleBooking>false</AlwaysAllowDoubleBooking>
+            <ID>100000007</ID>
+            <Name>COURTNEY GRAFTON</Name>
+            <FirstName>COURTNEY</FirstName>
+            <LastName>GRAFTON</LastName>
+            <isMale>false</isMale>
+          </Staff>
+        </StaffMembers>
+      </GetStaffResult>
+    </GetStaffResponse>
+  </soap:Body>
+</soap:Envelope>

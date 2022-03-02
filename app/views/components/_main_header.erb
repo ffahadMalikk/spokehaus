@@ -1,0 +1,149 @@
+<!--<header id="main-header" role='navigation'>-->
+<!--  <div class='container-fluid'>-->
+<!--    <div class='navbar-header'>-->
+<!--      <h1 class='logo'><%#= active_link_to 'Spokehaüs', home_path -%></h1>-->
+
+<!--      <button name='navbar-toggle' class='navbar-toggle' data-target='#main-nav' data-toggle='collapse'>-->
+<!--        <span class='sr-only'>Toggle navigation</span>-->
+<!--        <i class='icon-bar'></i>-->
+<!--        <i class='icon-bar'></i>-->
+<!--        <i class='icon-bar'></i>-->
+<!--      </button>-->
+<!--    </div>-->
+
+<!--    <nav id='main-nav' class='collapse'>-->
+<!--      <ul>-->
+<!--        <li><%#= active_link_to 'Experience', experience_path -%></li>-->
+<!--        <li><%#= active_link_to 'Ride', ride_path -%></li>-->
+<!--        <li><%#= link_to 'Shop', 'https://www.shopspokehaus.ca' -%></li>-->
+<!--        <li><%#= active_link_to 'Instructors', instructors_path -%></li>-->
+        <%#- if current_user.present? %>
+<!--          <li>-->
+            <%#= active_link_to user_profile_path do %>
+<!--            <strong><%#= current_user.first_name -%></strong>&rsquo;s Profile-->
+            <%#- end -%>
+<!--          </li>-->
+
+          <%#- credits_count = credits_for_user(current_user) -%>
+          <%#- if credits_count > 0 -%>
+<!--            <li>-->
+              <%#= active_link_to packages_path, role: :button, class: 'button-book-class button-secondary-action' do -%>
+<!--                <strong>-->
+                  <%#- if credits_count > Package::UNLIMITED_THRESHOLD %>
+                    <%#= t('packages.unlimited') %>
+                  <%#- else %>
+                    <%#= credits_count %>
+                  <%#- end %>
+<!--                </strong> <%#= 'credit'.pluralize(credits_count) %>-->
+              <%#- end -%>
+<!--            </li>-->
+          <%#- else -%>
+<!--            <li>-->
+              <%#= active_link_to packages_path, role: :button, class: 'button-book-class button-secondary-action' do -%>
+<!--                Buy <strong>Credits</strong>-->
+              <%#- end -%>
+<!--            </li>-->
+          <%#- end -%>
+
+        <%#- else -%>
+<!--          <li><%#= active_link_to 'Sign In', user_session_path -%> / <%#= active_link_to 'Register', new_user_registration_path -%></li>-->
+<!--          <li><%#= active_link_to packages_path, role: :button, class: 'button-book-class button-secondary-action' do -%>Buy <strong>Credits</strong><%#- end -%></li>-->
+        <%#- end -%>
+
+<!--        <li><%#= active_link_to calendar_path, role: :button, class: 'button-book-class button-primary-action' do -%>Book a <strong>Class</strong><%#- end -%></li>-->
+<!--      </ul>-->
+<!--    </nav>-->
+<!--  </div>-->
+<!--</header>-->
+
+<header class="header">
+  <div class="container-fluid top-bar">
+    <div class="container custom-container pt-2">
+      <div class="row flex-wrap text-white">
+        <div class="col-12 col-md-6 px-md-0">
+          <ul class="nav mt-2">
+            <li class="mx-2">
+									<span class="mr-2">
+							      <i aria-hidden="true" class="fas fa-map-marker-alt"></i>
+									</span>
+              <span class="list-text">70 Dan Leckie Way, Toronto, ON</span>
+            </li>
+            <li class="mx-2">
+              <a href="mailto:cityplace@spokehaus.ca">
+										<span class="mr-2">
+								      <i aria-hidden="true" class="fas fa-mail-bulk"></i>
+										</span>
+                <span class="list-text">cityplace@spokehaus.ca</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-6 px-md-0 d-flex justify-content-end">
+          <ul class="nav header-social-icons mt-2">
+            <li class="mx-2">
+              <a href="https://www.facebook.com/SPOKEHAUS">
+										<span class="elementor-icon-list-icon">
+								      <i aria-hidden="true" class="fab fa-facebook-f"></i>
+										</span>
+                <span class="list-text"></span>
+              </a>
+            </li>
+            <li class="mx-2">
+              <a href="https://www.instagram.com/spokehaus/">
+										<span class="elementor-icon-list-icon">
+								      <i aria-hidden="true" class="fab fa-instagram"></i>
+										</span>
+                <span class="list-text"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid top-header d-lg-flex align-items-lg-center">
+    <div class="container custom-container">
+      <div class="row flex-wrap">
+        <div class="col-12 col-lg-3 px-md-0 d-flex align-items-center">
+          <a href="/">
+            <%= image_tag 'header/logo.png', alt: 'HIGH/RIDE', width: "274"%>
+          </a>
+        </div>
+        <div class="col-12 col-lg-9 pr-md-0 d-lg-flex justify-content-end">
+          <nav class="navbar navbar-expand-lg pr-lg-2">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu-cont" aria-controls="main-menu-cont" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse pr-lg-4" id="main-menu-cont">
+              <ul class="navbar-nav main-menu mr-auto">
+                <li class="nav-item">
+                  <%= active_link_to 'Ride', ride_path, class: "nav-link"%>
+                </li>
+                <li class="nav-item">
+                  <%= active_link_to 'About Us', aboutus_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= active_link_to 'Instructors', instructor_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= active_link_to 'faq', faq_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= active_link_to 'Contact Us', contactus_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item d-lg-inline-flex align-items-center">
+                  <%= active_link_to 'Sign In', user_session_path, class: "nav-link px-1" %> / <%= active_link_to 'Register', new_user_registration_path, class: "nav-link px-1" %>
+                </li>
+              </ul>
+            </div>
+            <div class="top-btns-cont d-flex flex-wrap">
+              <%= active_link_to packages_path, role: :button, class: 'btn btn-primary mr-lg-4' do %>Buy Credits<% end %>
+              <%= active_link_to calendar_path, role: :button, class: 'btn btn-primary' do %>Book a Class<% end %>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

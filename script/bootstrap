@@ -1,0 +1,4 @@
+#!/bin/bash
+
+bundle
+rake db:create db:migrate db:test:prepare db:seed

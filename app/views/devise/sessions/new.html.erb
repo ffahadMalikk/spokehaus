@@ -1,0 +1,37 @@
+<section id='authentication-form' class='page-section'>
+  <header class='page-section-header'>
+    <h1>Sign In</h1>
+    <%= link_to 'Register', new_user_registration_path -%>
+    <%= link_to 'Forgot', new_password_path(resource_name) -%>
+  </header>
+
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+    <p class='info'>All fields are required.</p>
+
+    <%= devise_error_messages! %>
+
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "off" %>
+
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <span class='help-block'><%= link_to "Forgot?", new_password_path(resource_name) %></span>
+      <% end -%>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+      <%= f.hidden_field :remember_me, value: true %>
+    <% end -%>
+
+    <div class="actions">
+      <%= f.submit "Sign In", class: 'primary-action' %>
+    </div>
+  <% end %>
+</section>

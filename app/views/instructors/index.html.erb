@@ -1,0 +1,21 @@
+<section id='instructors-index' class='page-section'>
+  <header class='page-section-header'>
+    <h1>Ha&uuml;s Masters</h1>
+  </header>
+
+  <div class='instructors-container'>
+    <%- @instructors.each do |instructor| -%>
+      <article class='instructor'>
+        <%= link_to instructor_path(instructor), style: "background-image: url(#{image_url("instructors/thumbs/#{instructor.name.parameterize}-bw.jpg")})" do %>
+          <header>
+            <h1><%= instructor.name -%></h1>
+          </header>
+        <%- end -%>
+      </article>
+    <%- end -%>
+  </div>
+
+  <footer class='page-section-footer'>
+    <%= link_to 'Book your ride', calendar_path, class: 'page-section-footer-cta' %>
+  </footer>
+</section>

@@ -1,0 +1,172 @@
+#main-footer
+  width: 100%
+  opacity: 0
+  +transition(opacity 400ms)
+
+  &.ready
+    opacity: 1
+
+  a
+    +transition(color 50ms)
+
+    &:hover,
+    &:focus
+      text-decoration: underline
+
+  .primary-footer,
+  .secondary-footer
+    +clearfix
+
+  .primary-footer
+    background-color: material-color('grey', '900')
+    color: material-color('grey', '400')
+    padding:
+      top: $padding-large-vertical
+      bottom: $grid-gutter-width
+    font-size: $font-size-small
+
+    address,
+    .contact
+      +make-xs-column(6)
+
+    .newsletter-form
+      +make-xs-column(12)
+
+    address,
+    .contact,
+    .newsletter-form
+      +make-sm-column(4)
+      padding: 0
+      margin: 0
+
+    h2
+      font:
+        family: $oswald
+        size: $font-size-large
+        weight: 400
+      text-transform: uppercase
+      color: material-color('grey', '600')
+
+    p
+      line-height: 1.5
+
+    a
+      color: material-color('grey', '200')
+
+      &.map,
+      &.tel,
+      &.email,
+      &.instagram
+        &:before
+          +fa-icon
+          width: 1.4em
+          color: material-color('grey')
+
+      &.map:before
+        content: $fa-var-location-arrow
+
+      &.tel:before
+        content: $fa-var-phone
+
+      &.email:before
+        content: $fa-var-envelope-o
+
+      &.instagram:before
+        content: $fa-var-instagram
+
+      &:hover,
+      &:focus
+        color: white
+
+        &:before
+          color: $orange
+
+    input[name="b_1c2f6edbe8efbaf1e68ae951b_e5ef96d225"]
+      position: absolute
+      left: -99999px
+
+    .input-group
+      label
+        @extend .sr-only
+
+      input
+        font-family: $oswald
+        outline: none
+        text-transform: uppercase
+
+      input[type='email'],
+      .input-group-btn input[type='submit']
+        height: 40px
+        padding: $padding-large-vertical
+
+      input[type='email']
+        @extend .form-control
+        background:
+          color: material-color('grey', '600')
+          image: none
+        color: material-color('grey', '100') !important
+        line-height: 1.5 !important
+        border: 0
+          radius: $border-radius-base 0 0 $border-radius-base !important
+        box-shadow: none
+        -webkit-appearance: caret
+        -moz-appearance: caret
+        +placeholder(material-color('grey', '900'))
+        +transition(background-color 200ms)
+
+        &:hover,
+        &:focus
+          color: black !important
+          background: white
+          box-shadow: none
+          outline: 0
+          +placeholder(material-color('grey', '500'))
+
+      .input-group-btn input[type='submit']
+        border: 0
+        background-color: material-color('grey', '700')
+        color: material-color('grey', '400')
+
+        &:hover,
+        &:focus,
+        &:active
+          color: white
+          background-color: $orange
+          outline: 0
+
+  .secondary-footer
+    @extend .container
+    font:
+      family: $oswald
+      size: $font-size-small
+    text-transform: uppercase
+    color: material-color('grey')
+    padding:
+      top: $padding-large-vertical
+      bottom: $padding-large-vertical
+
+    a
+      color: inherit
+
+      &:hover,
+      &:focus
+        color: material-color('grey', '800')
+
+    .secondary-footer-nav
+      @extend .list-unstyled
+      float: left
+      margin: 0
+
+      li
+        display: inline-block
+        margin: 0 $padding-large-horizontal 0 0
+
+    .colophon
+      float: right
+      text-align: right
+      font-size: inherit
+      line-height: inherit
+
+  @media only screen and (min-width: $screen-xs-min)
+    .primary-footer
+      font-size: $font-size-base

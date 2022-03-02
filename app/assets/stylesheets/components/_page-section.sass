@@ -1,0 +1,119 @@
+.page-section
+  @extend .container-fluid
+  position: relative
+  background: white
+  +clearfix
+
+  .page-section-header
+    +make-row
+    @extend .container-fluid
+    position: relative
+    font-family: $oswald
+    padding-bottom: $padding-large-vertical
+    border-bottom: 1px solid material-color('grey', '300')
+    margin:
+      top: $grid-gutter-width
+      bottom: $grid-gutter-width
+
+    h1
+      margin: 0
+      font-size: $font-size-h3
+      line-height: 1.25
+      text:
+        align: center
+        transform: uppercase
+
+  .page-section-footer
+    +make-row
+    @extend .container-fluid
+
+    .page-section-footer-cta
+      +make-row
+      @extend .container-fluid
+      display: block
+      background: $orange
+      color: white
+      font:
+        family: $oswald
+        weight: 400
+        size: $font-size-h3
+      line-height: 1
+      text:
+        transform: uppercase
+        align: center
+        decoration: none
+      padding: 1em 0
+      margin-bottom: $padding-small-vertical
+      +transition(background-color 100ms)
+
+      &:after
+        +fa-icon
+        content: $fa-var-angle-right
+        margin-left: .25em
+        font-size: 1.333em
+        line-height: .666
+        color: $orange-light
+        +transition(color 100ms)
+
+      &:hover,
+      &:focus
+        background-color: $orange-dark
+
+        &:after
+          color: white
+
+
+  &.page-section-generic > .container
+    max-width: $screen-sm
+    padding-bottom: $grid-gutter-width
+    color: material-color('grey', '700')
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong
+      color: material-color('grey', '900')
+
+    .lead
+      text-align: center
+
+    .legal-list
+      +list-unstyled
+      counter-reset: privacy-policy-list
+
+      > li > h2
+        font:
+          family: $oswald
+          weight: 400
+          size: $font-size-h4
+        text-transform: uppercase
+        margin-top: 1.5em
+
+        &:before
+          counter-increment: privacy-policy-list
+          content: counter(privacy-policy-list) "."
+          margin-right: .5em
+
+  @media only screen and (min-width: $screen-sm-min)
+    &.page-section-generic
+      padding-top: $grid-gutter-width
+
+      > .container .legal-list
+        > li > h2
+          font-size: $font-size-h3
+
+    .page-section-footer .page-section-footer-cta
+      font-size: $font-size-h2
+
+  @media only screen and (min-width: $screen-md-min)
+    .page-section-header
+      margin-top: $grid-gutter-width * 1.5
+
+      h1
+        font-size: $font-size-h1
+
+    .page-section-footer .page-section-footer-cta
+      font-size: $font-size-h1

@@ -1,0 +1,225 @@
+#experience
+  .page-section-header
+    +make-row
+    background: white image-url('experience/5250-1920.jpg') center center no-repeat
+      size: cover
+    padding-top: 100%
+    border: 0
+    margin:
+      top: 0
+      bottom: 0
+
+    h1
+      +make-row
+      @extend .container-fluid
+      position: absolute
+      top: $grid-gutter-width * 2
+      left: $grid-gutter-width / 2
+      max-width: 15em
+      font:
+        size: $font-size-large
+        weight: 300
+      text:
+        align: left
+      color: material-color('grey', '100')
+
+      strong
+        font-weight: 700
+        color: white
+
+  .page-sub-sections-container
+    +make-row
+    border-bottom: 4px solid material-color('grey', '100')
+
+    .page-sub-section
+      +make-sm-column(6)
+      position: relative
+      padding: 0
+      height: $line-height-computed * 15
+      overflow: hidden
+      border: 4px solid material-color('grey', '100')
+        left-width: 0
+        right-width: 0
+        bottom-width: 0
+      background: material-color('grey', '900') center center no-repeat
+        size: cover
+      color: white
+
+      &:before
+        content: ''
+        background: black
+
+      &:before,
+      .page-sub-section-header,
+      .page-sub-section-content
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        padding: $grid-gutter-width / 2
+        +transition-property(transform opacity)
+        +transition-duration(200ms)
+
+      &:before
+        opacity: 0
+
+      .page-sub-section-header
+        opacity: 1
+        -webkit-transform: scale3d(1, 1, 1)
+        -ms-transform: scale3d(1, 1, 1)
+        -o-transform: scale3d(1, 1, 1)
+        transform: scale3d(1, 1, 1)
+
+        h1
+          position: absolute
+          height: 1em
+          top: 0
+          left: 0
+          right: 0
+          bottom: 0
+          margin: auto
+          font:
+            family: $oswald
+            weight: 700
+          text:
+            align: center
+            transform: uppercase
+
+      .page-sub-section-content
+        max-width: $screen-xs
+        margin: auto
+        opacity: 0
+        -webkit-transform: scale3d(.75, .75, 1)
+        -ms-transform: scale3d(.75, .75, 1)
+        -o-transform: scale3d(.75, .75, 1)
+        transform: scale3d(.75, .75, 1)
+
+        h2
+          font:
+            family: $oswald
+            size: $font-size-h3
+            weight: 700
+          text-transform: uppercase
+          color: white
+
+        p
+          color: material-color('grey', '300')
+
+      &.show-content
+        &:before
+          opacity: .5
+
+        .page-sub-section-header
+          opacity: 0
+          -webkit-transform: scale3d(.75, .75, 1)
+          -ms-transform: scale3d(.75, .75, 1)
+          -o-transform: scale3d(.75, .75, 1)
+          transform: scale3d(.75, .75, 1)
+
+        .page-sub-section-content
+          opacity: 1
+          -webkit-transform: scale3d(1, 1, 1)
+          -ms-transform: scale3d(1, 1, 1)
+          -o-transform: scale3d(1, 1, 1)
+          transform: scale3d(1, 1, 1)
+
+  #experience-ride
+    background-image: image-url('experience/1042-720.jpg')
+
+  #experience-music
+    background-image: image-url('experience/music-338.jpg')
+
+  @media only screen and (min-width: 361px)
+    .page-section-header
+      padding-top: 80%
+
+      h1
+        font-size: 21px
+
+  @media only screen and (min-width: $screen-xs-min)
+    .page-section-header
+      padding-top: 50%
+
+      h1
+        left: $grid-gutter-width
+
+    .page-sub-sections-container
+      .page-sub-section
+        height: $line-height-computed * 12
+
+  @media only screen and (min-width: 561px)
+    .page-section-header
+      h1
+        font-size: $font-size-h3
+
+  @media only screen and (min-width: $screen-sm-min)
+    .page-section-header
+      h1
+        top: $grid-gutter-width * 3
+        font-size: $font-size-h2
+
+    .page-sub-sections-container
+      .page-sub-section
+        height: $line-height-computed * 14
+
+        &:nth-child(odd)
+          border-right-width: 2px
+
+        &:nth-child(even)
+          border-left-width: 2px
+
+        .page-sub-section-header,
+        .page-sub-section-content
+          padding: ($grid-gutter-width / 2) $grid-gutter-width
+
+  @media only screen and (min-width: $screen-md-min)
+    .page-section-header h1
+      top: $grid-gutter-width * 3
+      left: $grid-gutter-width * 1.5
+      font-size: $font-size-h1
+
+    .page-sub-sections-container
+      .page-sub-section
+        .page-sub-section-header,
+        .page-sub-section-content
+          padding: $grid-gutter-width
+
+        .page-sub-section-header
+          h1
+            font-size: floor($font-size-h1 * 1.5)
+
+        .page-sub-section-content
+          h2
+            font-size: $font-size-h2
+
+  @media only screen and (min-width: $screen-lg-min)
+    .page-section-header h1
+      top: $grid-gutter-width * 4
+      left: $grid-gutter-width * 2
+      font-size: floor($font-size-h1 * 1.25)
+
+    .page-sub-sections-container
+      .page-sub-section
+        .page-sub-section-header
+          h1
+            font-size: floor($font-size-h1 * 1.5)
+
+  @media only screen and (min-width: 1441px)
+    .page-section-header h1
+      left: $grid-gutter-width * 2.5
+      font-size: floor($font-size-h1 * 1.5)
+
+    .page-sub-sections-container
+      .page-sub-section
+        height: $line-height-computed * 16
+
+        .page-sub-section-content
+          max-width: $screen-sm
+
+          h2
+            font-size: $font-size-h1
+
+          p
+            font-size: $font-size-large
+            line-height: 1.5

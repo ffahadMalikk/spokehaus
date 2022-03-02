@@ -1,0 +1,1 @@
+ansible-playbook -i script/inventory script/staging.yml

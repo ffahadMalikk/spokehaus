@@ -1,0 +1,23 @@
+<section id='authentication-form' class='page-section'>
+  <header class='page-section-header'>
+    <%= link_to 'Sign In', user_session_path -%>
+    <%= link_to 'Register', new_user_registration_path -%>
+    <h1>Forgot</h1>
+  </header>
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+    <p class='info'>All fields are required.</p>
+
+    <%= devise_error_messages! %>
+
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Reset", class: 'primary-action' %>
+    </div>
+  <% end %>
+</section>

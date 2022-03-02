@@ -1,0 +1,7 @@
+<%= content_for :actions_footer, cancel_booking_button(@booking) %>
+
+<article class='alert alert-type-notice'>
+  <p><%== t('bookings.youre_booked_notice') -%></p>
+</article>
+
+<%= render 'form', url: booking_path(@booking), method: @booking.persisted? ? :put : :post %>

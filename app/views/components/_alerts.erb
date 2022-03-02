@@ -1,0 +1,24 @@
+<%- if current_or_guest_user.admin? -%>
+  <article class='alert alert-type-admin' role='alert'>
+    <h1 class='alert-admin-title'>Admin</h1>
+  </article>
+<%- end -%>
+
+<%- current_or_guest_user.bookings.pending.each do |booking| %>
+  <%= link_to complete_pending_bookings_path, class: 'alert alert-type-booking', role: :alert do %>
+    <h2 class='booking-title'><%= booking.scheduled_class.name -%></h2>
+    <span class='booking-bikes-count'><%= pluralize booking.bike_count, 'bike' %></span> &ndash; <span class='booking-class-time'><%= l(booking.scheduled_class.start_time, format: :booking) -%></span>
+
+    <%- if current_or_guest_user.guest? -%>
+      <p class='booking-help'><%= t('booking_pending_registration') %></p>
+    <%- elsif !user_has_credits? -%>
+      <p class='booking-help'><%= t('insufficient_credits') %></p>
+    <%- end -%>
+  <%- end -%>
+<%- end -%>
+
+<%- (alerts ||= {}).each do |type, message| %>
+  <article class="alert alert-type-<%= type -%>" role='alert'>
+    <%= message -%>
+  </article>
+<%- end -%>

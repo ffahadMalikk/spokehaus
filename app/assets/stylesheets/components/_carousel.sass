@@ -1,0 +1,57 @@
+.carousel
+  .carousel-inner,
+  .item
+    height: 100%
+
+  .item
+    background:
+      position: center center
+      repeat: no-repeat
+      size: cover
+
+.carousel-inner
+  @extend .list-unstyled
+
+.carousel-caption
+  // top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  overflow: auto
+
+.carousel-control
+  max-width: 100px
+  text-shadow: none
+
+  &.right,
+  &.left
+    background: transparent
+    border: 0
+
+  .fa
+    display: block
+    position: absolute
+    top: 50%
+    left: 0
+    right: 0
+    text-align: center
+    height: 1em
+    font:
+      size: $font-size-h1
+    color: material-color('grey', '700')
+
+.carousel-indicators
+  z-index: 20
+
+  li
+    box-sizing: border-box
+
+    &,
+    &.active
+      width: $grid-gutter-width / 2
+      height: $grid-gutter-width / 2
+      margin: 0 $padding-small-horizontal
+      border-color: material-color('grey')
+
+    &.active
+      background-color: material-color('grey')

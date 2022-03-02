@@ -1,0 +1,34 @@
+// Buttons
+a[role='button'],
+a.button,
+button,
+input[type='button'],
+input[type='submit']
+  @extend .btn, .btn-default
+
+  &.primary-action
+    @extend .btn-primary
+
+  &.success
+    @extend .btn-success
+
+  &.info
+    @extend .btn-info
+
+  &.warning
+    @extend .btn-warning
+
+  &.danger
+    @extend .btn-danger
+
+  &.button-cancel,
+  &.button-sign-up-sheet
+    &:before
+      +fa-icon
+      margin-right: $padding-small-horizontal
+
+  &.button-cancel:before
+    content: $fa-var-ban
+
+  &.button-sign-up-sheet:before
+    content: $fa-var-list-ul

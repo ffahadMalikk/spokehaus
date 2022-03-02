@@ -1,0 +1,5 @@
+#!/bin/bash
+
+brew install ansible
+ansible-galaxy install -r script/requirements.yml --ignore-errors
+vagrant up --provision # TODO test if vagrant is up and if so provision it instead.

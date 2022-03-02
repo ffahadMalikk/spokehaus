@@ -1,0 +1,152 @@
+#home
+  position: relative
+  margin-bottom: 2px
+
+  > .carousel
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+
+  .carousel-caption
+    bottom: $grid-gutter-width * 2.5
+    text:
+      align: center
+      shadow: none
+    color: material-color('grey', '700')
+
+    header
+      @extend .container-fluid
+
+      h1
+        font:
+          family: $oswald
+          weight: 300
+          size: $font-size-h2
+        text-transform: uppercase
+        color: material-color('grey', '600')
+        margin: 0 0 ($grid-gutter-width / 2)
+
+        .comma
+          display: none
+
+        span
+          display: block
+          margin: 0 0 $padding-small-vertical
+
+        strong
+          font-weight: 700
+          color: material-color('grey', '800')
+
+    .cta
+      @extend .container-fluid
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+
+      .button-book
+        @extend .btn-lg
+        display: block
+        background: $orange
+        color: white
+        border: 0
+        font:
+          size: $font-size-h3
+          family: $oswald
+          weight: 400
+        text-transform: uppercase
+        min-width: 11em
+
+        &:hover,
+        &:focus,
+        &:active
+          background-color: $orange-dark
+
+      small
+        font:
+          family: $oswald
+          size: $font-size-small
+        color: material-color('grey')
+        text-transform: lowercase
+        display: block
+        clear: both
+
+        sup
+          margin-left: 1px
+
+    &.carousel-caption-dark-theme
+      color: material-color('grey', '300')
+
+      header
+        h1
+          color: material-color('grey', '200')
+
+          strong
+            color: white
+
+  @media only screen and (max-width: $screen-xs-min)
+    .carousel-indicators
+      width: 80%
+      margin-left: -40%
+
+  @media only screen and (min-width: $screen-xs-min)
+    .carousel-caption .cta
+      .button-book
+        display: inline-block
+
+      small
+        margin-top: .5em
+
+  @media only screen and (min-width: $screen-xs-min) and (min-height: 560px)
+    .carousel-caption
+      header
+        padding:
+          top: $grid-gutter-width
+          left: $grid-gutter-width
+          right: $grid-gutter-width
+
+        h1
+          font-size: $font-size-h1
+
+      .cta
+        .button-book
+          font-size: $font-size-h2
+
+  @media only screen and (min-width: $screen-sm-min)
+    .carousel-caption
+      header
+        padding:
+          top: $grid-gutter-width
+          left: $grid-gutter-width
+          right: $grid-gutter-width
+
+        h1
+          font-size: floor($font-size-h1 * 1.25)
+          margin-bottom: $grid-gutter-width
+
+      .cta
+        .button-book
+          font-size: $font-size-h2
+          min-width: 10em
+
+  @media only screen and (min-width: $screen-md-min)
+    .carousel-caption header
+      padding:
+        left: $grid-gutter-width * 2
+        right: $grid-gutter-width * 2
+
+  @media only screen and (min-width: $screen-lg-min)
+    .carousel-caption
+      header
+        h1
+          font-size: floor($font-size-h1 * 1.5)
+          margin-bottom: $grid-gutter-width
+
+      .cta
+        .button-book
+          min-width: 12em
+
+        small
+          font-size: $font-size-base
